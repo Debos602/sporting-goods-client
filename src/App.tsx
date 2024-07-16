@@ -1,12 +1,11 @@
-import { Button } from "./components/ui/button";
-
+import Home from "./pages/Home/Home";
 
 const App = () => {
-  return (
-    <div>
-      <Button>Click Me</Button>
-    </div>
-  );
+    return (
+        <div className="">
+            <Home />
+        </div>
+    );
 };
 
 export default App;
