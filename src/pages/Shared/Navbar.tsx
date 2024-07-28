@@ -38,6 +38,16 @@ const Navbar = () => {
                     </Link>
                 </NavigationMenuLink>
             </NavigationMenuItem>
+            <NavigationMenuItem className="p-2 ml-[4px]">
+                <NavigationMenuLink asChild>
+                    <Link
+                        to="/all-products"
+                        className={`${navigationMenuTriggerStyle} max-lg:ml-10 font-bold text-2xl hover:border-b-2 border-white`}
+                    >
+                        All-products
+                    </Link>
+                </NavigationMenuLink>
+            </NavigationMenuItem>
             <NavigationMenuItem className="p-2">
                 <NavigationMenuLink asChild>
                     <Link
@@ -72,8 +82,8 @@ const Navbar = () => {
     );
     //   bg-transparent
     return (
-        <div className="border-b-2 bg-gradient-to-t from-amber-950 to-amber-700 fixed top-0 left-0 w-full z-30">
-            <div className="flex justify-between items-center max-w-screen-lg mx-auto p-4">
+        <div className="border-b-2 bg-gradient-to-t from-amber-950 to-amber-700 fixed top-0 left-0 w-full z-30 px-5 md:px-5 lg:px-0">
+            <div className="flex justify-between items-center max-w-screen-lg mx-auto ">
                 {/* Hamburger Menu Icon for Mobile */}
                 <div className="flex">
                     <div className="lg:hidden flex items-center">
