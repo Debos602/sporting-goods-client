@@ -10,6 +10,10 @@ import { Link } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import logo from "../../assets/images/logo.png";
 import { FaCartArrowDown } from "react-icons/fa6";
+import { useSelector } from "react-redux";
+
+import { selectCartCount } from "@/redux/cartSlice";
+import { RootState } from "@/redux/store";
 
 /**
  * Navbar Component
@@ -21,6 +25,8 @@ import { FaCartArrowDown } from "react-icons/fa6";
  */
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const cartCount = useSelector((state: RootState) => selectCartCount(state));
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -109,8 +115,17 @@ const Navbar = () => {
                 </NavigationMenu>
                 <div className="text-white w-50">
                     <div className="flex justify-center items-center">
-                        <FaCartArrowDown className="text-xl " />
-                        <span className="ms-2 text-xl">Cart</span>
+                        <div className="relative">
+                            <FaCartArrowDown className="text-white text-2xl" />
+                            {cartCount > 0 && (
+                                <span className="absolute -top-2 -right-3 bg-red-600 text-white rounded-full px-2 py-1 text-xs">
+                                    {cartCount}
+                                </span>
+                            )}
+                        </div>
+                        <div className="text-white text-xl font-md ms-3">
+                            My Store
+                        </div>
                     </div>
 
                     <div className="text-xl">

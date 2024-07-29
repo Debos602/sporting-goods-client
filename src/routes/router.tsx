@@ -26,7 +26,7 @@ const router = createBrowserRouter([
                 element: <AllProduct />,
             },
             {
-                path: "/all-products/:id",
+                path: "/category/:id",
                 element: <SingleProduct />,
             },
             {
@@ -34,17 +34,17 @@ const router = createBrowserRouter([
                 element: <ManageProduct />,
             },
             {
-                path: "/cart",
+                path: "/cart/:id",
                 element: <Cart />,
             },
             {
                 path: "/checkout",
                 element: <CheckOut />,
             },
-            {
-                path: "/contact",
-                element: <CheckOut />,
-            },
+            // {
+            //     path: "/cartpage",
+            //     element:
+            // }
         ],
     },
 ]);

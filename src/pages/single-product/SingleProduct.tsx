@@ -1,6 +1,6 @@
 import React from "react";
 import { useGetGroupProductQuery } from "@/redux/api/baseApi";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { TProducts } from "@/types";
 import {
     Card,
@@ -10,7 +10,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 const SingleProduct: React.FC = () => {
     // Using useParams hook to get the category_id from the URL
@@ -53,8 +52,8 @@ const SingleProduct: React.FC = () => {
             <div className=" mt-10 max-w-screen-lg mx-auto ">
                 <div className="container mx-auto py-8">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-                        {products.map((product: TProducts) => (
-                            <Card className="w-full border-2 border-orange-800 text-black p-3 shadow-orange-950">
+                        {products?.map((product: TProducts) => (
+                            <Card className="w-full border-2 border-orange-800 text-black p-3 shadow-orange-950 bg-gradient-to-t from-amber-200 to-transparent">
                                 <img
                                     src={product?.image}
                                     className="object-contain max-h-[250px] w-full mb-2 "
@@ -100,10 +99,12 @@ const SingleProduct: React.FC = () => {
                                     </p>
                                 </CardContent>
                                 <CardFooter className="p-0">
-                                    <Button className="font-bold p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-full text-center py-1">
-                                        {" "}
-                                        Add to Cart
-                                    </Button>
+                                    <Link
+                                        className="font-bold p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-full text-center py-1"
+                                        to={`/cart/${product?._id}`}
+                                    >
+                                        Detailed view{" "}
+                                    </Link>
                                 </CardFooter>
                             </Card>
                         ))}

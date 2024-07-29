@@ -1,4 +1,5 @@
 export type TProducts = {
+    _id: string;
     id: string;
     name: string;
     category_id: number;
@@ -27,17 +28,23 @@ export interface TProductsResponse {
     success: boolean;
     data: TProducts[];
 }
-// src/types/react-rating-stars-component.d.ts
-
-export interface ReactStarsProps {
-    count?: number;
-    value?: number;
-    onChange?: (newValue: number) => void;
-    size?: number;
-    activeColor?: string;
-    isHalf?: boolean;
-    emptyIcon?: React.ReactNode;
-    filledIcon?: React.ReactNode;
-    halfIcon?: React.ReactNode;
-    edit?: boolean;
+export interface TProductDetails {
+    data: {
+        id: string;
+        name: string;
+        description: string;
+        category: string;
+        brand: string;
+        stock: number;
+        rating: number;
+        price: number;
+        image: string;
+    };
+}
+export interface CartState {
+    items: CartItem[];
+}
+export interface CartItem {
+    id: string;
+    stock: number;
 }

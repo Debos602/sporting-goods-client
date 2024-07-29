@@ -12,6 +12,7 @@ const FeaturedProduct = () => {
                 Loading....
             </p>
         );
+
     return (
         <div className="bg-amber-50 py-4 md:py-8 lg:py-8 px-5 ">
             <div className=" mt-5 max-w-screen-lg mx-auto ">

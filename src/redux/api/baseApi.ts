@@ -1,4 +1,4 @@
-import { TProductsResponse } from "@/types";
+import { TProductDetails, TProductsResponse } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // Define a service using a base URL and expected endpoints
@@ -25,11 +25,20 @@ export const baseApi = createApi({
         }),
         getGroupProduct: builder.query<TProductsResponse, string>({
             query: (category_id) => ({
-                url: `/all-products/${category_id}`, // Endpoint for fetching products by category
+                url: `/category/${category_id}`, // Endpoint for fetching products by category
                 method: "GET", // HTTP method
             }),
             providesTags: (result, error, category_id) =>
                 result ? [{ type: "product", id: category_id }] : [],
+            // Use providesTags with a dynamic tag based on category_id
+        }),
+        getSingleProduct: builder.query<TProductDetails, string>({
+            query: (_id) => ({
+                url: `/all-products/${_id}`, // Endpoint for fetching products by category
+                method: "GET", // HTTP method
+            }),
+            providesTags: (result, error, _id) =>
+                result ? [{ type: "product", id: _id }] : [],
             // Use providesTags with a dynamic tag based on category_id
         }),
     }),
@@ -40,4 +49,5 @@ export const {
     useGetCategoryQuery,
     useGetProductQuery,
     useGetGroupProductQuery,
+    useGetSingleProductQuery,
 } = baseApi;
