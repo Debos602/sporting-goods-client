@@ -6,7 +6,7 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
 import logo from "../../assets/images/logo.png";
 import { FaCartArrowDown } from "react-icons/fa6";
@@ -25,8 +25,13 @@ import { RootState } from "@/redux/store";
  */
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const cartCount = useSelector((state: RootState) => selectCartCount(state));
+
+    const handleNavigatetoCart = () => {
+        navigate("/cartpage");
+    };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -116,7 +121,10 @@ const Navbar = () => {
                 <div className="text-white w-50">
                     <div className="flex justify-center items-center">
                         <div className="relative">
-                            <FaCartArrowDown className="text-white text-2xl" />
+                            <FaCartArrowDown
+                                className="text-white text-2xl"
+                                onClick={handleNavigatetoCart}
+                            />
                             {cartCount > 0 && (
                                 <span className="absolute -top-2 -right-3 bg-red-600 text-white rounded-full px-2 py-1 text-xs">
                                     {cartCount}

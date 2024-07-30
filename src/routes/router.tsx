@@ -2,6 +2,7 @@ import MainLayout from "@/components/layout/MainLayout";
 import About from "@/pages/about/About";
 import AllProduct from "@/pages/allProducts/AllProduct";
 import Cart from "@/pages/cart/Cart";
+import CartPage from "@/pages/cart/CartPage";
 import CheckOut from "@/pages/checkout/CheckOut";
 import Home from "@/pages/Home/Home";
 import ManageProduct from "@/pages/manageProduct/ManageProduct";
@@ -41,10 +42,10 @@ const router = createBrowserRouter([
                 path: "/checkout",
                 element: <CheckOut />,
             },
-            // {
-            //     path: "/cartpage",
-            //     element:
-            // }
+            {
+                path: "/cartpage",
+                element: <CartPage />,
+            },
         ],
     },
 ]);
