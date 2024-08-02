@@ -22,6 +22,7 @@ const CartPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate();
     const cartItems = useSelector((state: RootState) => selectCartItems(state));
+    console.log(cartItems);
     const totalPrice = useSelector((state: RootState) =>
         selectCartTotalPrice(state)
     );
@@ -30,6 +31,7 @@ const CartPage: React.FC = () => {
 
     const handleQuantityChange = (id: string, quantity: number) => {
         if (quantity < 1) return;
+
         dispatch(updateItemQuantity({ id, quantity }));
     };
 
@@ -38,19 +40,14 @@ const CartPage: React.FC = () => {
     };
 
     const handleProceedToCheckout = () => {
-        navigate("/checkout");
+        navigate("/checkout", { state: { cartItems, totalPriceWithVAT } });
     };
 
     return (
         <>
-            <GlobalImage></GlobalImage>
+            <GlobalImage />
             <div className="bg-gradient-to-t from-amber-100 to-transparent py-10">
-                {" "}
                 <Table className="max-w-screen-lg mx-auto">
-                    {/* <TableCaption className="text-xl text-orange-700 mb-2">
-                        A list of your recent invoices.
-                    </TableCaption> */}
-
                     {cartItems.length === 0 ? (
                         <p className="text-xl text-center py-20 text-orange-700">
                             Your cart is empty.
@@ -78,9 +75,8 @@ const CartPage: React.FC = () => {
                                         <TableCell className="text-xl">
                                             In Stock: {item.stock}
                                         </TableCell>
-
                                         <TableCell
-                                            className="bg-amber-800 text-xl text-white p-0 px-4 py-1  mr-2"
+                                            className="bg-amber-800 text-xl text-white p-0 px-4 py-1 mr-2 cursor-pointer"
                                             onClick={() =>
                                                 handleQuantityChange(
                                                     item.id,
@@ -94,7 +90,7 @@ const CartPage: React.FC = () => {
                                             {item.stock}
                                         </TableCell>
                                         <TableCell
-                                            className="bg-amber-800 text-white p-0 px-4 py-2 "
+                                            className="bg-amber-800 text-white p-0 px-4 py-2 cursor-pointer"
                                             onClick={() =>
                                                 handleQuantityChange(
                                                     item.id,
@@ -105,7 +101,7 @@ const CartPage: React.FC = () => {
                                             +
                                         </TableCell>
                                         <TableCell
-                                            className="bg-amber-800 text-white py-1 px-3  ml-4 text-xl"
+                                            className="bg-amber-800 text-white py-1 px-3 ml-4 text-xl cursor-pointer"
                                             onClick={() =>
                                                 handleRemove(item.id)
                                             }
@@ -125,7 +121,7 @@ const CartPage: React.FC = () => {
                                         {totalPriceWithVAT.toFixed(2)}
                                     </p>
                                     <button
-                                        className={`mt-4 bg-orange-800 uppercase hover:bg-orange-600 text-white py-2 px-4  ${
+                                        className={`mt-4 bg-orange-800 uppercase hover:bg-orange-600 text-white py-2 px-4 ${
                                             cartItems.some(
                                                 (item) => item.stock > 0
                                             )

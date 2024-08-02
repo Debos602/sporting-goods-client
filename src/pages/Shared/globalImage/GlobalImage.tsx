@@ -19,7 +19,7 @@ const GlobalImage = () => {
                     <p className="mt-2 font-bold text-xl mb-4">
                         🚴 Enjoy a{" "}
                         <strong className="text-orange-500 text-4xl">
-                            15%
+                            25%
                         </strong>{" "}
                         Discount on all Sports Carts this Summer! ⚡
                     </p>

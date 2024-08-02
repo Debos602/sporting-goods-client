@@ -1,6 +1,6 @@
 // src/components/Cart.tsx
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetSingleProductQuery } from "@/redux/api/baseApi";
 import Rating from "react-rating";
 import { PhotoProvider, PhotoView } from "react-photo-view";
@@ -12,9 +12,11 @@ import { AppDispatch, RootState } from "@/redux/store";
 import { addToCart, selectCartItems } from "@/redux/cartSlice";
 import GlobalImage from "../Shared/globalImage/GlobalImage";
 
+import { Button } from "@/components/ui/button";
+
 const Cart: React.FC = () => {
     const { id: _id } = useParams<{ id: string }>();
-
+    const navigate = useNavigate();
     const { data: productData, isLoading } = useGetSingleProductQuery(
         _id as string
     );
@@ -40,8 +42,13 @@ const Cart: React.FC = () => {
     }
 
     const product = productData?.data;
+    // console.log(product);
     const { name, description, category, brand, stock, rating, price, image } =
         product;
+    console.log(product);
+    const handleCartPage = () => {
+        navigate("/cartpage");
+    };
 
     const handleAddToCart = () => {
         if (!_id) return; // Guard against undefined id
@@ -54,6 +61,7 @@ const Cart: React.FC = () => {
                     name: name, // Add name
                     price: price, // Add price
                     stock: itemStock + 1,
+                    quantity: product.stock,
                 })
             );
         } else {
@@ -167,12 +175,12 @@ const Cart: React.FC = () => {
                                             ? "Out of Stock"
                                             : "Add To Cart"}
                                     </button>
-                                    <Link
-                                        to="/cartpage"
+                                    <Button
+                                        onClick={handleCartPage}
                                         className="bg-orange-700 uppercase text-white border-2 border-orange-800 py-2 px-4 \ hover:bg-orange-600 transition duration-300"
                                     >
                                         View Cart
-                                    </Link>
+                                    </Button>
                                 </div>
                             </div>
                         </div>

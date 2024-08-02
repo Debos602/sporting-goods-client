@@ -1,31 +1,95 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Toaster, toast } from "sonner";
 import GlobalImages from "../Shared/globalImage/GlobalImages";
-import SuccessModal from "./SuccessModal";
-// Assume you have a SuccessModal component
-
-interface FormData {
-    name: string;
-    email: string;
-    phone: string;
-    address: string;
-}
+import { useLocation, useNavigate } from "react-router-dom";
+import { CartItem, FormData, TOrderRequest } from "@/types";
+import {
+    useCreateOrderMutation,
+    useLazyGetProductsQuery,
+    useUpdateProductMutation,
+} from "@/redux/api/baseApi";
 
 const CheckOut: React.FC = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { cartItems, totalPriceWithVAT } = location.state || {
+        cartItems: [],
+        totalPriceWithVAT: 0,
+    };
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<FormData>();
-    const [orderPlaced, setOrderPlaced] = useState(false);
 
-    const onSubmit: SubmitHandler<FormData> = (data) => {
-        console.log(data);
-        // Here you can handle the logic to deduct stock and place the order
+    const [createOrder] = useCreateOrderMutation();
+    const [updateProduct] = useUpdateProductMutation();
+    const [trigger, { isLoading }] = useLazyGetProductsQuery(); // Destructure correctly
 
-        // Show success modal
-        setOrderPlaced(true);
+    const onSubmit: SubmitHandler<FormData> = async (data) => {
+        const orderData: TOrderRequest = {
+            items: cartItems,
+            totalPriceWithVAT,
+            userDetails: data,
+            status: "Pending",
+        };
+
+        try {
+            // Create the order
+            await createOrder(orderData).unwrap();
+
+            // Deduct quantities from the product stock
+            await Promise.all(
+                cartItems.map(async (item: CartItem) => {
+                    const updatedStock = item.quantity - item.stock; // Correct logic
+                    if (updatedStock >= 0) {
+                        await updateProduct({
+                            id: item.id,
+                            data: { stock: updatedStock },
+                        }).unwrap();
+                    }
+                })
+            );
+
+            // Refetch products to get the latest stock values
+            await trigger(); // Trigger the lazy query
+
+            // Show success toast
+            toast("Order placed successfully!", {
+                duration: 4000,
+                style: {
+                    background: "#4caf50",
+                    color: "#fff",
+                },
+            });
+
+            // Redirect to success page
+            navigate("/success", {
+                state: {
+                    message: "Your order has been placed successfully!",
+                },
+            });
+        } catch (error) {
+            // Show error toast
+            toast("An error occurred while placing the order.", {
+                duration: 4000,
+                style: {
+                    background: "#f44336",
+                    color: "#fff",
+                },
+            });
+        }
     };
+
+    if (isLoading) {
+        return (
+            <p className="text-3xl text-center text-yellow-500 my-2 font-bold">
+                Loading....
+            </p>
+        );
+    }
 
     return (
         <>
@@ -120,13 +184,12 @@ const CheckOut: React.FC = () => {
                     <h2 className="text-lg font-semibold">Payment Methods</h2>
                     <div className="mb-4">
                         <label>
-                            <input type="radio" name="payment" value="cod" />
-                            Cash on Delivery
-                        </label>
-                    </div>
-                    <div className="mb-4">
-                        <label>
-                            <input type="radio" name="payment" value="cod" />
+                            <input
+                                type="radio"
+                                {...register("paymentMethod")}
+                                value="Cash"
+                                defaultChecked
+                            />
                             Cash on Delivery
                         </label>
                     </div>
@@ -134,7 +197,8 @@ const CheckOut: React.FC = () => {
                 </div>
             </div>
 
-            {orderPlaced && <SuccessModal />}
+            {/* Toast Container */}
+            <Toaster />
         </>
     );
 };

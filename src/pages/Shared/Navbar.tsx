@@ -126,7 +126,7 @@ const Navbar = () => {
                                 onClick={handleNavigatetoCart}
                             />
                             {cartCount > 0 && (
-                                <span className="absolute -top-2 -right-3 bg-red-600 text-white rounded-full px-2 py-1 text-xs">
+                                <span className="absolute -top-3 -right-4 bg-red-600 text-white rounded-full px-2 py-1 text-xs">
                                     {cartCount}
                                 </span>
                             )}

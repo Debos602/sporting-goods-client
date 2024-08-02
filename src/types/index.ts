@@ -49,11 +49,61 @@ export interface CartItem {
     name: string;
     stock: number;
     price: number;
+    quantity: number;
     // Add any other properties relevant to your cart item
 }
 export interface FormData {
+    id: string;
     name: string;
     email: string;
     phone: string;
     address: string;
+    paymentMethod: string;
 }
+// src/types/index.ts
+
+export interface TOrderRequest {
+    items: Array<{
+        id: string;
+        name: string;
+        price: number;
+        stock: number;
+    }>;
+    totalPriceWithVAT: number;
+    userDetails: {
+        id: string;
+        name: string;
+        email: string;
+        paymentMethod: string;
+        phone: string;
+        address: string;
+    };
+    status?: string; // Optional
+}
+
+export interface TOrderResponse {
+    items: Array<{
+        id: string;
+        name: string;
+        price: number;
+        stock: number;
+    }>;
+    totalPriceWithVAT: number;
+    userDetails: {
+        id: string;
+        name: string;
+        email: string;
+        paymentMethod: string;
+        phone: string;
+        address: string;
+    };
+    status?: string;
+    createdAt: string; // ISO 8601 date string
+    updatedAt: string; // ISO 8601 date string
+}
+export type TUpdateProductRequest = {
+    stock?: number;
+    price?: number;
+    rating?: number;
+    // Add other fields if necessary
+};

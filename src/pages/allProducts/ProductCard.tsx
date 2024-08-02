@@ -12,7 +12,6 @@ import Rating from "react-rating";
 import { Star } from "lucide-react";
 
 const ProductCard = ({ product }: { product: TProducts }) => {
-    console.log(product);
     const { _id, brand, description, image, name, price, stock, rating } =
         product;
     const getStarColor = (ratingValue: number) => {
