@@ -38,10 +38,10 @@ const FeaturedCards = ({
         return "#F59E0B"; // Default Yellow
     };
     return (
-        <Card className="w-full border-2 border-orange-800 text-black p-3 shadow-orange-950 bg-gradient-to-t from-amber-200 to-transparent">
+        <Card className="w-full border-2 border-orange-800 text-black p-3 hover:scale-105 duration-300 hover:bg-gradient-to-b shadow-orange-950 bg-gradient-to-t from-amber-200 to-amber-100 relative pb-10">
             <img
                 src={image}
-                className="object-contain max-h-[250px] w-full mb-2 "
+                className="object-contain max-h-[200px] w-full mb-2 "
                 alt=""
             />
             <CardHeader className="p-0">
@@ -86,7 +86,7 @@ const FeaturedCards = ({
             </CardContent>
             <CardFooter className="p-0">
                 <Link
-                    className="font-bold p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-full text-center py-1"
+                    className="font-bold p-0 uppercase border-2 absolute bottom-3 left-1/2 translate-x-[-50%] hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-[295px] text-center py-1"
                     to={`category/${category_id}`}
                 >
                     {" "}

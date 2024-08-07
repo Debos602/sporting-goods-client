@@ -5,26 +5,26 @@ import { BsTwitter } from "react-icons/bs";
 
 const Footer = () => {
     return (
-        <footer className="bg-gradient-to-t from-amber-950 to-amber-700 text-white py-8">
+        <footer className="bg-amber-950  text-white py-8">
             <div className="container mx-auto flex flex-col items-center">
                 {/* <!-- Logo --> */}
                 <div className="mb-4">
-                    <img src={logo} alt="Logo" className="h-20" />
+                    <img src={logo} alt="Logo" className="max-h-28" />
                 </div>
 
                 {/* <!-- Social Icons --> */}
                 <div className="flex space-x-4 mb-4">
                     <Link to="https://facebook.com" target="_blank">
-                        <FaFacebookSquare className="h-7 w-7" />
+                        <FaFacebookSquare className="h-8 w-8" />
                     </Link>
                     <Link to="https://twitter.com" target="_blank">
-                        <BsTwitter className="h-7 w-7" />
+                        <BsTwitter className="h-8 w-8" />
                     </Link>
                     <Link to="https://youtube.com" target="_blank">
-                        <FaYoutube className="h-7 w-7" />
+                        <FaYoutube className="h-8 w-8" />
                     </Link>
                     <Link to="https://whatsapp.com" target="_blank">
-                        <FaWhatsappSquare className="h-7 w-7" />
+                        <FaWhatsappSquare className="h-8 w-8" />
                     </Link>
                 </div>
 
@@ -32,7 +32,7 @@ const Footer = () => {
                 <div className="mb-4">
                     <Link
                         to="mailto:debos.das.02@gmail.com"
-                        className="text-white hover:text-gray-300"
+                        className="text-white hover:text-gray-300 text-2xl"
                     >
                         Email: Debos.das.02@gmail.com
                     </Link>
@@ -42,10 +42,10 @@ const Footer = () => {
                 <div className="w-full flex flex-col md:flex-row justify-between items-center mb-4">
                     {/* <!-- Policies --> */}
                     <div className="mb-4 md:mb-0">
-                        <h3 className="font-bold mb-2 text-amber-600 hover:text-amber-600">
+                        <h3 className="font-bold mb-2 text-amber-500 text-xl hover:text-amber-600">
                             POLICIES
                         </h3>
-                        <ul className="space-y-1">
+                        <ul className="space-y-1  text-xl">
                             <li>
                                 <Link
                                     to="/refund-policy"
@@ -83,18 +83,10 @@ const Footer = () => {
 
                     {/* <!-- Information --> */}
                     <div className="mb-4 md:mb-0">
-                        <h3 className="font-bold mb-2 text-amber-600 hover:text-amber-600">
+                        <h3 className="font-bold mb-2 text-amber-500 text-xl hover:text-amber-600">
                             INFORMATION
                         </h3>
-                        <ul className="space-y-1">
-                            <li>
-                                <Link
-                                    to="/mobile-app"
-                                    className="hover:text-gray-300"
-                                >
-                                    Mobile App
-                                </Link>
-                            </li>
+                        <ul className="space-y-1 text-xl">
                             <li>
                                 <Link
                                     to="/track-order"
@@ -109,14 +101,6 @@ const Footer = () => {
                                     className="hover:text-gray-300"
                                 >
                                     Blog
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    to="/faqs"
-                                    className="hover:text-gray-300"
-                                >
-                                    FAQs
                                 </Link>
                             </li>
                             <li>
@@ -140,10 +124,10 @@ const Footer = () => {
 
                     {/* <!-- Newsletter --> */}
                     <div className="w-full md:w-1/3">
-                        <h3 className="font-bold mb-2 text-amber-600 hover:text-amber-600">
+                        <h3 className="font-bold mb-2 text-amber-500 text-xl hover:text-amber-600">
                             NEWSLETTER
                         </h3>
-                        <p className="mb-2">
+                        <p className="mb-2 text-xl">
                             Sign up to get access to savings of up to 90% OFF.
                         </p>
                         <form className="flex flex-col">
@@ -154,7 +138,7 @@ const Footer = () => {
                             />
                             <button
                                 type="submit"
-                                className="bg-amber-500 hover:bg-amber-600 text-white py-2 rounded"
+                                className="bg-amber-500 hover:bg-amber-600 text-white py-2 rounded text-xl uppercase font-bold"
                             >
                                 Subscribe
                             </button>
@@ -164,10 +148,10 @@ const Footer = () => {
 
                 {/* <!-- ABOUT DAILYSALE.COM --> */}
                 <div className="max-w-2xl mb-4 text-center">
-                    <h3 className="font-bold mb-2 text-amber-600 hover:text-amber-600">
-                        ABOUT DAILYSALE.COM
+                    <h3 className="font-bold mb-2 text-amber-500 text-2xl hover:text-amber-600">
+                        ABOUT SPORTS EQUIPMENT
                     </h3>
-                    <p className="mb-2">
+                    <p className="mb-2 text-xl font-sans">
                         We strive to perfect the e-commerce buying experience by
                         providing the best customer service and one of the
                         lowest prices to our customers. Our customers buy from
@@ -178,7 +162,7 @@ const Footer = () => {
                 </div>
 
                 {/* <!-- Copyright Text --> */}
-                <div className="text-sm">
+                <div className="text-ms">
                     &copy; Copyright 2024 by Sporting Equipment. All rights
                     reserved.
                 </div>

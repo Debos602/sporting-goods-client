@@ -4,6 +4,7 @@ import AllProduct from "@/pages/allProducts/AllProduct";
 import Cart from "@/pages/cart/Cart";
 import CartPage from "@/pages/cart/CartPage";
 import CheckOut from "@/pages/checkout/CheckOut";
+import ContactUs from "@/pages/contact/Contact";
 import Home from "@/pages/Home/Home";
 import ManageProduct from "@/pages/manageProduct/ManageProduct";
 import SingleProduct from "@/pages/single-product/SingleProduct";
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
             {
                 path: "/success",
                 element: <SuccessPage />,
+            },
+            {
+                path: "/contact",
+                element: <ContactUs />,
             },
         ],
     },

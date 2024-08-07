@@ -6,7 +6,7 @@ import Rating from "react-rating";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { Star } from "lucide-react";
-import bgImage from "../../assets/images/istockphoto-949190756-170667a.webp";
+import bgImage from "../../assets/images/manageImage.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/store";
 import { addToCart, selectCartItems } from "@/redux/cartSlice";
@@ -89,13 +89,19 @@ const Cart: React.FC = () => {
     return (
         <>
             <GlobalImage></GlobalImage>
+
             <section
-                className="bg-cover bg-center relative z-10"
+                className="bg-cover bg-center relative z-10 py-16"
                 style={{ backgroundImage: `url(${bgImage})` }}
             >
+                <div className="max-w-screen-lg mx-auto">
+                    <h2 className="text-4xl font-semibold text-white relative z-20 mb-10  inline-block">
+                        Details Sports Goods
+                    </h2>
+                </div>
                 <div className="flex justify-center items-center ">
                     <div className="absolute inset-0 bg-gray-900 bg-opacity-50 h-full w-full"></div>
-                    <div className="max-w-screen-lg relative z-20 w-full bg-white shadow-lg  p-8">
+                    <div className="max-w-screen-lg mx-auto relative z-20 w-full bg-orange-100 shadow-lg  p-8">
                         <div className="flex flex-col md:flex-row">
                             <div className="w-full md:w-1/2 border-2 border-orange-800 mr-5 bg-gradient-to-t from-amber-200 to-transparent overflow-hidden">
                                 <PhotoProvider>
@@ -162,7 +168,7 @@ const Cart: React.FC = () => {
                                 <div className="flex justify-between">
                                     <button
                                         onClick={handleAddToCart}
-                                        className={`bg-orange-700 text-white border-2 border-orange-800 uppercase py-2 px-4  hover:bg-orange-600 transition duration-300 ${
+                                        className={`bg-orange-700 text-white hover:bg-white border-2 border-orange-800 uppercase py-2 px-4  hover:text-orange-700 font-semibold transition duration-300 ease-in-out ${
                                             (existingItem?.stock ?? 0) >= stock
                                                 ? "opacity-50 cursor-not-allowed"
                                                 : ""
@@ -177,7 +183,7 @@ const Cart: React.FC = () => {
                                     </button>
                                     <Button
                                         onClick={handleCartPage}
-                                        className="bg-orange-700 uppercase text-white border-2 border-orange-800 py-2 px-4 \ hover:bg-orange-600 transition duration-300"
+                                        className="bg-orange-700 uppercase text-white border-2 border-orange-800 py-2 px-4 \ hover:bg-white hover:text-orange-700 font-semibold transition duration-300"
                                     >
                                         View Cart
                                     </Button>

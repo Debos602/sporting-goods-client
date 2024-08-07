@@ -1,4 +1,3 @@
-// src/pages/CartPage.tsx
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -30,6 +29,7 @@ const CartPage: React.FC = () => {
     const totalPriceWithVAT = totalPrice * (1 + vat);
 
     const handleQuantityChange = (id: string, quantity: number) => {
+        // Ensure the quantity is within stock limits
         if (quantity < 1) return;
 
         dispatch(updateItemQuantity({ id, quantity }));
@@ -46,7 +46,7 @@ const CartPage: React.FC = () => {
     return (
         <>
             <GlobalImage />
-            <div className="bg-gradient-to-t from-amber-100 to-transparent py-10">
+            <div className="bg-amber-200 bg-opacity-50 py-10">
                 <Table className="max-w-screen-lg mx-auto">
                     {cartItems.length === 0 ? (
                         <p className="text-xl text-center py-20 text-orange-700">
@@ -54,7 +54,7 @@ const CartPage: React.FC = () => {
                         </p>
                     ) : (
                         <>
-                            <TableBody className="border-b-2 border-orange-800 ">
+                            <TableBody className="border-b-2 border-orange-800  ">
                                 <h2 className="text-center text-orange-700 uppercase text-3xl font-semibold border-b-2 border-orange-800 pb-3">
                                     Cart list
                                 </h2>
@@ -73,10 +73,10 @@ const CartPage: React.FC = () => {
                                             Price: ${item.price}
                                         </TableCell>
                                         <TableCell className="text-xl">
-                                            In Stock: {item.stock}
+                                            Count: {item.stock}
                                         </TableCell>
                                         <TableCell
-                                            className="bg-amber-800 text-xl text-white p-0 px-4 py-1 mr-2 cursor-pointer"
+                                            className="bg-amber-800 text-2xl text-white p-0  px-4 py-1 mr-2 cursor-pointer"
                                             onClick={() =>
                                                 handleQuantityChange(
                                                     item.id,
@@ -87,18 +87,21 @@ const CartPage: React.FC = () => {
                                             -
                                         </TableCell>
                                         <TableCell className="mx-2 text-xl">
-                                            {item.stock}
+                                            In Stock: {item.quantity}
                                         </TableCell>
-                                        <TableCell
-                                            className="bg-amber-800 text-white p-0 px-4 py-2 cursor-pointer"
-                                            onClick={() =>
-                                                handleQuantityChange(
-                                                    item.id,
-                                                    item.stock + 1
-                                                )
-                                            }
-                                        >
-                                            +
+                                        <TableCell>
+                                            <button
+                                                className="w-full h-full text-xl bg-amber-800 text-white cursor-pointer disabled:opacity-50 px-4 py-2"
+                                                onClick={() =>
+                                                    handleQuantityChange(
+                                                        item.id,
+                                                        item.stock + 1
+                                                    )
+                                                }
+                                                disabled={item.stock <= 0} // Disable the button if stock is 0 or less
+                                            >
+                                                +
+                                            </button>
                                         </TableCell>
                                         <TableCell
                                             className="bg-amber-800 text-white py-1 px-3 ml-4 text-xl cursor-pointer"
@@ -111,7 +114,7 @@ const CartPage: React.FC = () => {
                                     </TableRow>
                                 ))}
                             </TableBody>
-                            <TableFooter>
+                            <TableFooter className="text-center">
                                 <TableRow>
                                     <p className="text-xl font-bold mt-4">
                                         Total Price: ${totalPrice.toFixed(2)}
@@ -121,16 +124,16 @@ const CartPage: React.FC = () => {
                                         {totalPriceWithVAT.toFixed(2)}
                                     </p>
                                     <button
-                                        className={`mt-4 bg-orange-800 uppercase hover:bg-orange-600 text-white py-2 px-4 ${
+                                        className={`mt-4 bg-orange-800 uppercase text-white hover:bg-white hover:text-orange-700 py-2 px-4 duration-500 border-2 border-orange-800 font-bold ${
                                             cartItems.some(
-                                                (item) => item.stock > 0
+                                                (item) => item.quantity > 0
                                             )
                                                 ? ""
                                                 : "opacity-50 cursor-not-allowed"
                                         }`}
                                         disabled={
                                             !cartItems.some(
-                                                (item) => item.stock > 0
+                                                (item) => item.quantity > 0
                                             )
                                         }
                                         onClick={handleProceedToCheckout}

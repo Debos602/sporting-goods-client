@@ -24,7 +24,7 @@ const GlobalImage = () => {
                         Discount on all Sports Carts this Summer! ⚡
                     </p>
                     <span className="flex justify-center text-orange-500">
-                        <ImCircleDown className="text-3xl" />
+                        <ImCircleDown className="text-3xl animate-bounce" />
                     </span>
                 </div>
             </div>

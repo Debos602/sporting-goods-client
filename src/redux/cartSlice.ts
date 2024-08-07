@@ -37,11 +37,14 @@ const cartSlice = createSlice({
                 item.stock = quantity;
             }
         },
+        clearCart: (state) => {
+            state.items = [];
+        },
     },
 });
 
 // Action creators
-export const { addToCart, removeFromCart, updateItemQuantity } =
+export const { addToCart, removeFromCart, updateItemQuantity, clearCart } =
     cartSlice.actions;
 
 // Selector to get all cart items
@@ -55,7 +58,7 @@ export const selectCartTotalPrice = (state: { cart: { items: CartItem[] } }) =>
         0
     );
 
-// **Selector to get total number of items in cart**
+// Selector to get total number of items in cart
 export const selectCartCount = (state: { cart: { items: CartItem[] } }) =>
     state.cart.items.reduce((count, item) => count + item.stock, 0);
 

@@ -2,6 +2,8 @@ import { TCategoryProducts } from "@/types";
 import { FaRightLong } from "react-icons/fa6";
 import { useGetCategoryQuery } from "@/redux/api/baseApi";
 import FeaturedCards from "./FeaturedCards";
+import { Parallax } from "react-parallax";
+import image12 from "../../assets/images/image-12.avif";
 
 const FeaturedProduct = () => {
     const { data: categories, isLoading } = useGetCategoryQuery({});
@@ -14,15 +16,20 @@ const FeaturedProduct = () => {
         );
 
     return (
-        <div className="bg-amber-50 py-4 md:py-8 lg:py-8 px-5 ">
-            <div className=" mt-5 max-w-screen-lg mx-auto ">
+        <Parallax
+            className="parallax "
+            style={{ backgroundImage: `url(${image12})` }}
+            strength={-200}
+        >
+            <div className="parallax-overlay"></div>
+            <div className="parallax-content max-w-screen-lg mx-auto py-16 ">
                 <div className="flex items-center mb-5">
-                    <h2 className="text-2xl font-bold text-orange-900 uppercase">
+                    <h2 className="text-2xl font-bold text-white uppercase">
                         Latest product
                     </h2>
-                    <FaRightLong className="ms-3 text-orange-900" />
+                    <FaRightLong className="ms-3 text-white hover:rotate-90  duration-700" />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {categories.data
                         ?.slice(0, 6)
                         .map((categoryProduct: TCategoryProducts) => (
@@ -33,7 +40,7 @@ const FeaturedProduct = () => {
                         ))}
                 </div>
             </div>
-        </div>
+        </Parallax>
     );
 };
 

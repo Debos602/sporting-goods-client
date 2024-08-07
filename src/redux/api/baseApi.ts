@@ -1,10 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
     TProductDetails,
-    TProductsResponse,
     TOrderRequest,
     TOrderResponse,
     TUpdateProductRequest,
+    TProductResponse,
+    TCreateProductRequest,
+    TDeleteProductResponse,
+    TProductsResponse,
 } from "@/types";
 
 export const baseApi = createApi({
@@ -32,12 +35,30 @@ export const baseApi = createApi({
             providesTags: (result, error, _id) =>
                 result ? [{ type: "product", id: _id }] : [],
         }),
+        createProduct: builder.mutation<
+            TProductResponse,
+            TCreateProductRequest
+        >({
+            query: (newProduct) => ({
+                url: "/create-product",
+                method: "POST",
+                body: newProduct,
+            }),
+        }),
         createOrder: builder.mutation<TOrderResponse, TOrderRequest>({
             query: (newOrder) => ({
                 url: "/orders",
                 method: "POST",
                 body: newOrder,
             }),
+        }),
+        deleteProduct: builder.mutation<TDeleteProductResponse, string>({
+            query: (id) => ({
+                url: `/all-product/${id}`,
+                method: "DELETE",
+            }),
+            // Optionally, you can invalidate cache or refetch data here if needed
+            invalidatesTags: ["product"], // Adjust based on your needs
         }),
         updateProduct: builder.mutation<
             void,
@@ -67,4 +88,6 @@ export const {
     useCreateOrderMutation,
     useUpdateProductMutation,
     useLazyGetProductsQuery, // Export the lazy query
+    useCreateProductMutation,
+    useDeleteProductMutation,
 } = baseApi;

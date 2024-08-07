@@ -9,3 +9,18 @@
     font-display: swap;
     src: url(/fonts/Roboto.woff2) format("woff2");
 }
+@layer utilities {
+    .parallax {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .parallax-overlay {
+        @apply absolute inset-0 bg-black opacity-80 mix-blend-multiply;
+    }
+
+    .parallax-content {
+        @apply relative z-10;
+    }
+}

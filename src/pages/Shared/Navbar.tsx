@@ -79,21 +79,11 @@ const Navbar = () => {
                     </Link>
                 </NavigationMenuLink>
             </NavigationMenuItem>
-            <NavigationMenuItem className="p-2">
-                <NavigationMenuLink asChild>
-                    <Link
-                        to="/contact"
-                        className={`${navigationMenuTriggerStyle} max-lg:ml-10 font-bold text-2xl hover:border-b-2 border-white`}
-                    >
-                        Contact
-                    </Link>
-                </NavigationMenuLink>
-            </NavigationMenuItem>
         </>
     );
     //   bg-transparent
     return (
-        <div className="border-b-2 bg-gradient-to-t from-amber-950 to-amber-700 fixed top-0 left-0 w-full z-30 px-5 md:px-5 lg:px-0">
+        <div className="border-b-2 bg-amber-950 bg-opacity-90 fixed top-0 left-0 w-full z-30 px-5 md:px-5 lg:px-0">
             <div className="flex justify-between items-center max-w-screen-lg mx-auto ">
                 {/* Hamburger Menu Icon for Mobile */}
                 <div className="flex">
@@ -126,7 +116,7 @@ const Navbar = () => {
                                 onClick={handleNavigatetoCart}
                             />
                             {cartCount > 0 && (
-                                <span className="absolute -top-3 -right-4 bg-red-600 text-white rounded-full px-2 py-1 text-xs">
+                                <span className=" animate-ping absolute -top-3 -right-6 bg-gray-950 text-white rounded-full px-2 py-1 text-xs">
                                     {cartCount}
                                 </span>
                             )}

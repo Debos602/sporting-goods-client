@@ -2,17 +2,22 @@ import React from "react";
 import Image from "../../assets/images/image-4-removebg-preview.png";
 import Image2 from "../../assets/images/image-5.jpg";
 import Image3 from "../../assets/images/image-6.jpg";
+// import image10 from "../../assets/images/imag-10.png";
+import image11 from "../../assets/images/image-11.png";
 
 const AboutUs: React.FC = () => {
     return (
-        <div className="bg-amber-50">
-            <div className="mt-[100px] max-w-screen-lg mx-auto bg-gradient-to-t from-amber-50 to-amber-100 ">
+        <div
+            className="bg-amber-100 bg-center"
+            style={{ backgroundImage: `url(${image11})` }}
+        >
+            <div className="mt-[99px] max-w-screen-lg mx-auto  ">
                 {/* Company Information Section */}
-                <section className="bg-gray-50 p-8 rounded-lg shadow-lg mb-12">
+                <section className=" p-8 rounded-lg shadow-xl border-amber-200 border mb-12">
                     <h2 className="text-4xl font-extrabold text-gray-900 mb-6">
                         About Us
                     </h2>
-                    <p className="text-lg text-gray-800 leading-relaxed">
+                    <p className="text-lg font-semibold text-gray-800 leading-relaxed">
                         We are a premier provider of top-notch sports goods,
                         dedicated to assisting our customers in achieving their
                         fitness aspirations. Our legacy spans over a decade,
@@ -24,10 +29,10 @@ const AboutUs: React.FC = () => {
                         Mission & Vision
                     </h3>
                     <div className="">
-                        <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                        <h4 className="text-2xl font-semibold text-gray-800 mb-2">
                             Our Mission
                         </h4>
-                        <p className="text-lg text-gray-700">
+                        <p className="text-lg text-gray-700 font-semibold">
                             Our mission is to empower individuals to lead
                             healthier lives by delivering innovative and
                             dependable sports products. We are committed to
@@ -35,10 +40,10 @@ const AboutUs: React.FC = () => {
                             satisfaction, and continuous improvement.
                         </p>
                         <div>
-                            <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                            <h4 className="text-2xl font-semibold text-gray-800 mb-2">
                                 Our Vision
                             </h4>
-                            <p className="text-lg text-gray-700">
+                            <p className="text-lg text-gray-700 font-semibold">
                                 We envision being the ultimate destination for
                                 sports and fitness enthusiasts, renowned for our
                                 exceptional product quality, outstanding
@@ -53,25 +58,25 @@ const AboutUs: React.FC = () => {
                 {/* Mission and Vision Statements Section */}
                 {/* <section className="bg-gray-50 p-8 rounded-lg shadow-lg mb-12"></section> */}
                 {/* Our Team Section */}
-                <section className="bg-gray-50 p-8  rounded-lg shadow-lg mb-12">
+                <section className="p-8 border border-amber-200  rounded-lg shadow-lg mb-12">
                     <h3 className="text-3xl font-semibold text-gray-900 mb-6">
                         Meet Our Team
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {/* Team Member 1 */}
-                        <div className="bg-gray-50 p-6 rounded-lg shadow-lg text-center">
+                        <div className=" p-6 rounded-lg shadow-lg text-center border-amber-200 border">
                             <img
                                 src={Image}
                                 alt="John Doe"
                                 className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-300"
                             />
-                            <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                            <h4 className="text-lg font-semibold text-gray-800 mb-2">
                                 Debos Das
                             </h4>
-                            <p className="text-lg text-gray-600">
+                            <p className="text-xl font-medium text-gray-600">
                                 CEO & Founder
                             </p>
-                            <p className="mt-2 text-gray-700">
+                            <p className="mt-2 text-md font-semibold text-gray-700">
                                 Debos leads our team with over 20 years of
                                 experience in the sports industry. His vision
                                 and passion drive our company's success.
@@ -79,7 +84,7 @@ const AboutUs: React.FC = () => {
                         </div>
 
                         {/* Team Member 2 */}
-                        <div className="bg-gray-50 p-6 rounded-lg shadow-lg text-center">
+                        <div className=" p-6 rounded-lg shadow-lg text-center border-amber-200 border">
                             <img
                                 src={Image2}
                                 alt="Jane Smith"
@@ -99,7 +104,7 @@ const AboutUs: React.FC = () => {
                         </div>
 
                         {/* Team Member 3 */}
-                        <div className="bg-gray-50 p-6 rounded-lg shadow-lg text-center">
+                        <div className=" p-6 rounded-lg shadow-lg text-center border-amber-200 border">
                             <img
                                 src={Image3}
                                 alt="Michael Brown"
@@ -120,7 +125,7 @@ const AboutUs: React.FC = () => {
                     </div>
                 </section>
                 {/* Contact Information Section */}
-                <section className="bg-gray-50 p-8 rounded-lg shadow-lg mb-12">
+                <section className="p-8 rounded-lg shadow-lg mb-12 border-amber-200 border">
                     <h3 className="text-3xl font-semibold text-gray-900 mb-6">
                         Contact Information
                     </h3>
@@ -154,7 +159,7 @@ const AboutUs: React.FC = () => {
                 </section>
                 {/* Store Location Information */}
             </div>
-            <section className="bg-gray-50 text-center pt-8 rounded-lg shadow-lg">
+            <section className=" text-center pt-8 rounded-lg shadow-lg border-amber-200 border">
                 <h3 className="text-3xl font-semibold text-gray-900 mb-6">
                     Our Store Location
                 </h3>
