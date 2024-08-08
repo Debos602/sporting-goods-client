@@ -4,7 +4,7 @@ import ContactUs from "../contact/Contact";
 
 const Home = () => {
     return (
-        <div>
+        <div className="scroll-smooth focus:scroll-auto">
             <HeroSection />
             <FeaturedProduct />
             <ContactUs />

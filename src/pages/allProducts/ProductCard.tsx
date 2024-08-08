@@ -10,8 +10,15 @@ import { TProducts } from "@/types";
 import { Link } from "react-router-dom";
 import Rating from "react-rating";
 import { Star } from "lucide-react";
+import { useInView } from "react-intersection-observer";
 
-const ProductCard = ({ product }: { product: TProducts }) => {
+const ProductCard = ({
+    product,
+    index,
+}: {
+    product: TProducts;
+    index: number;
+}) => {
     const { _id, brand, description, image, name, price, stock, rating } =
         product;
     const getStarColor = (ratingValue: number) => {
@@ -26,69 +33,85 @@ const ProductCard = ({ product }: { product: TProducts }) => {
         }
         return "#F59E0B"; // Default Yellow
     };
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+    });
+    const animationDelay = `${index * 50}ms`;
 
     return (
-        <Card className="w-full border-2 border-orange-800 hover:scale-105 duration-300 hover:bg-gradient-to-b  text-black p-3 shadow-orange-950 bg-gradient-to-t from-amber-200 to-amber-100 relative pb-10">
-            <img
-                src={image}
-                className="object-contain max-h-[170px] w-full mb-2 "
-                alt={name}
-            />
-            <CardHeader className="p-0">
-                <CardTitle className="mb-2">{name}</CardTitle>
-                <CardDescription>
-                    <span className="font-semibold">Description:</span>{" "}
-                    {description}
-                </CardDescription>
-            </CardHeader>
-            <CardContent className="p-0 mb-2">
-                <p className="text-md font-semibold">
-                    Brand:{" "}
-                    <span className="text-base">{brand.substring(0, 4)}</span>
-                </p>
-                <p className="text-md font-semibold">
-                    Price: <span className="text-base">{price}</span>
-                </p>
+        <div
+            ref={ref}
+            className={`${inView ? "animate__animated animate__fadeInUp" : ""}`}
+            style={{ animationDelay }}
+        >
+            {" "}
+            <Card className="w-full border-2 border-orange-800 hover:scale-105 duration-300 hover:bg-gradient-to-b  text-black p-3 shadow-orange-950 bg-gradient-to-t from-amber-200 to-amber-100 relative pb-10">
+                <img
+                    src={image}
+                    className="object-contain max-h-[170px] w-full mb-2 "
+                    alt={name}
+                />
+                <CardHeader className="p-0">
+                    <CardTitle className="mb-2">
+                        {name.substring(0, 17)}
+                    </CardTitle>
+                    <CardDescription>
+                        <span className="font-semibold">Description:</span>{" "}
+                        {description.substring(0, 20)}
+                    </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0 mb-2">
+                    <p className="text-md font-semibold">
+                        Brand:{" "}
+                        <span className="text-base">
+                            {brand.substring(0, 4)}
+                        </span>
+                    </p>
+                    <p className="text-md font-semibold">
+                        Price: <span className="text-base">{price}</span>
+                    </p>
 
-                <p className="text-md font-semibold">
-                    Stock: <span className="text-base">{stock}</span>
-                </p>
-                <div className="flex items-center mb-2">
-                    <span className=" text-gray-700 flex items-center">
-                        <strong>Rating</strong>:{" "}
-                        <div className=" mt-2 ms-2">
-                            <Rating
-                                initialRating={rating} // Set initial rating value
-                                emptySymbol={
-                                    <Star
-                                        size={15}
-                                        color={getStarColor(rating)}
-                                    />
-                                }
-                                fullSymbol={
-                                    <Star
-                                        size={15}
-                                        color={getStarColor(rating)}
-                                        fill={getStarColor(rating)}
-                                    />
-                                }
-                                fractions={2}
-                                readonly={true} // Ensure stars are not interactive
-                                stop={5}
-                            />
-                        </div>
-                    </span>
-                </div>
-            </CardContent>
-            <CardFooter className="p-0 ">
-                <Link
-                    className="font-bold absolute bottom-3 left-1/2	translate-x-[-50%] z-10 p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-[212px] text-center py-1"
-                    to={`/cart/${_id}`}
-                >
-                    Detailed view{" "}
-                </Link>
-            </CardFooter>
-        </Card>
+                    <p className="text-md font-semibold">
+                        Stock: <span className="text-base">{stock}</span>
+                    </p>
+                    <div className="flex items-center mb-2">
+                        <span className=" text-gray-700 flex items-center">
+                            <strong>Rating</strong>:{" "}
+                            <div className=" mt-2 ms-2">
+                                <Rating
+                                    initialRating={rating} // Set initial rating value
+                                    emptySymbol={
+                                        <Star
+                                            size={15}
+                                            color={getStarColor(rating)}
+                                        />
+                                    }
+                                    fullSymbol={
+                                        <Star
+                                            size={15}
+                                            color={getStarColor(rating)}
+                                            fill={getStarColor(rating)}
+                                        />
+                                    }
+                                    fractions={2}
+                                    readonly={true} // Ensure stars are not interactive
+                                    stop={5}
+                                />
+                            </div>
+                        </span>
+                    </div>
+                </CardContent>
+                <CardFooter className="p-0 ">
+                    <Link
+                        className="font-bold absolute bottom-3 left-1/2	translate-x-[-50%] z-10 p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-[212px] text-center py-1"
+                        to={`/cart/${_id}`}
+                    >
+                        Detailed view{" "}
+                    </Link>
+                </CardFooter>
+            </Card>
+        </div>
     );
 };
 

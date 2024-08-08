@@ -19,9 +19,10 @@ const DialogContents: React.FC<DialogContentsProps> = ({
     } = useForm<TProducts>({
         defaultValues: {
             ...product,
-            name: "", // Set to empty to not show default value
+            name: "", // Set to empty to not show default values
             price: undefined, // Set to undefined to not show default value
-            description: "", // Set to empty to not show default value
+            // Set to empty to not show default value
+            stock: undefined,
         },
     });
 

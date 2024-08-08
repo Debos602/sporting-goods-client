@@ -113,14 +113,14 @@ const CheckOut: React.FC = () => {
     return (
         <>
             <GlobalImages />
-            <div className="bg-amber-200 bg-opacity-50">
+            <div className="bg-amber-200  bg-opacity-50 bg-shad">
                 <div className="max-w-screen-lg mx-auto py-16 ">
                     <h2 className="text-4xl text-orange-800 font-bold text-start uppercase mb-3">
                         Checkout
                     </h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            <div className="border-2 border-orange-800 p-8 bg-transparent bg-amber-900 bg-opacity-10">
+                            <div className="border-2 border-orange-800 p-8  bg-amber-900 bg-opacity-10">
                                 <h2 className="text-2xl font-semibold mb-2 ">
                                     User Details
                                 </h2>

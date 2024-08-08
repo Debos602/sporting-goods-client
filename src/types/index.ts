@@ -135,3 +135,7 @@ export type TUpdateProductRequest = {
     // Add other fields if necessary
 };
 // types.ts
+export interface FeaturedCardsProps {
+    categoryProduct: TProducts;
+    index: number;
+}

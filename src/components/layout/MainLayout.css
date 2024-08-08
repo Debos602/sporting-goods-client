@@ -1,0 +1,11 @@
+body {
+    overflow: hidden; /* Prevents default scrollbar */
+    /* height: 100vh; */
+}
+
+[data-lenis] {
+    /* height: 100vh;  */
+    overflow: hidden; /* Prevents additional scrollbars */
+    display: flex;
+    flex-direction: column;
+}

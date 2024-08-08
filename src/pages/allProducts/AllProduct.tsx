@@ -166,9 +166,15 @@ const AllProduct = () => {
                         </button>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {filteredProducts?.map((product: TProducts) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
+                        {filteredProducts?.map(
+                            (product: TProducts, index: number) => (
+                                <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                    index={index}
+                                />
+                            )
+                        )}
                     </div>
                 </div>
             </Parallax>

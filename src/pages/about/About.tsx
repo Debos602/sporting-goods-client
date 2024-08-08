@@ -4,20 +4,26 @@ import Image2 from "../../assets/images/image-5.jpg";
 import Image3 from "../../assets/images/image-6.jpg";
 // import image10 from "../../assets/images/imag-10.png";
 import image11 from "../../assets/images/image-11.png";
+import { useInView } from "react-intersection-observer";
 
 const AboutUs: React.FC = () => {
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+    });
+
     return (
         <div
             className="bg-amber-100 bg-center"
             style={{ backgroundImage: `url(${image11})` }}
         >
-            <div className="mt-[99px] max-w-screen-lg mx-auto  ">
+            <div className="mt-[99px] max-w-screen-lg mx-auto ">
                 {/* Company Information Section */}
-                <section className=" p-8 rounded-lg shadow-xl border-amber-200 border mb-12">
-                    <h2 className="text-4xl font-extrabold text-gray-900 mb-6">
+                <section className=" p-8 rounded-lg shadow-xl border-amber-200 border mb-12 animate__animated animate__fadeInUp">
+                    <h2 className="text-4xl font-extrabold text-gray-900 mb-6 ">
                         About Us
                     </h2>
-                    <p className="text-lg font-semibold text-gray-800 leading-relaxed">
+                    <p className="text-lg font-semibold text-gray-800 leading-relaxed animate__animated animate__fadeInUp">
                         We are a premier provider of top-notch sports goods,
                         dedicated to assisting our customers in achieving their
                         fitness aspirations. Our legacy spans over a decade,
@@ -25,10 +31,10 @@ const AboutUs: React.FC = () => {
                         and fitness enthusiasts, offering a diverse range of
                         high-quality products.
                     </p>
-                    <h3 className="text-3xl font-semibold text-gray-900 my-6">
+                    <h3 className="text-3xl font-semibold text-gray-900 my-6 animate__animated animate__fadeInUp">
                         Mission & Vision
                     </h3>
-                    <div className="">
+                    <div className=" animate__animated animate__fadeInUp">
                         <h4 className="text-2xl font-semibold text-gray-800 mb-2">
                             Our Mission
                         </h4>
@@ -58,6 +64,12 @@ const AboutUs: React.FC = () => {
                 {/* Mission and Vision Statements Section */}
                 {/* <section className="bg-gray-50 p-8 rounded-lg shadow-lg mb-12"></section> */}
                 {/* Our Team Section */}
+                <div
+                    ref={ref}
+                    className={`${
+                        inView ? "animate__animated animate__fadeInUp" : ""
+                    }`}
+                ></div>
                 <section className="p-8 border border-amber-200  rounded-lg shadow-lg mb-12">
                     <h3 className="text-3xl font-semibold text-gray-900 mb-6">
                         Meet Our Team

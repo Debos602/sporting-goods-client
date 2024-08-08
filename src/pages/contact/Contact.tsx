@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import image11 from "../../assets/images/image-11.png";
+import { useInView } from "react-intersection-observer";
 
 interface FormData {
     name: string;
@@ -33,6 +34,10 @@ const ContactUs: React.FC = () => {
         // Handle form submission logic here, e.g., sending the data to a server
         reset(); // Optionally reset the form after submission
     };
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+    });
 
     return (
         <div
@@ -40,7 +45,12 @@ const ContactUs: React.FC = () => {
             style={{ backgroundImage: `url(${image11})` }}
         >
             {" "}
-            <div className=" max-w-4xl mx-auto p-6  rounded-lg shadow-lg border-2 border-amber-800 ">
+            <div
+                ref={ref}
+                className={`max-w-4xl mx-auto p-6  rounded-lg shadow-lg border-2 border-amber-800 ${
+                    inView ? "animate__animated animate__fadeInUp" : ""
+                }`}
+            >
                 <h2 className="text-4xl font-extrabold text-center text-orange-800 mb-8">
                     Contact Us
                 </h2>

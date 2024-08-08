@@ -1,16 +1,13 @@
 // ManageProduct.tsx
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
     useGetProductQuery,
     useCreateProductMutation,
-    useUpdateProductMutation, // Uncommenteds
+    useUpdateProductMutation,
     useDeleteProductMutation,
 } from "@/redux/api/baseApi";
-import {
-    TCreateProductRequest,
-    TProducts,
-    // TUpdateProductRequest,
-} from "@/types";
+import { TCreateProductRequest, TProducts } from "@/types";
 import ManagImage from "../Shared/globalImage/ManagImage";
 import image2 from "../../assets/images/manageImage.jpg";
 import "./ManageProduct.css";
@@ -21,15 +18,15 @@ import { Parallax } from "react-parallax";
 import { toast } from "sonner";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import DialogContents from "./DialogContents";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const IMGBB_API_KEY = "09bd3d3e0869a6943ef1ad6d74606666";
 
 const ManageProduct = () => {
     const { data: productResponse, refetch } = useGetProductQuery([]);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [createProduct] = useCreateProductMutation();
-    const [updateProduct] = useUpdateProductMutation(); // Uncommented
+    const [updateProduct] = useUpdateProductMutation();
     const [deleteProduct] = useDeleteProductMutation();
 
     const {
@@ -70,6 +67,7 @@ const ManageProduct = () => {
             try {
                 await createProduct(productData).unwrap();
                 toast.success("Product created successfully!");
+                window.location.reload();
                 refetch();
             } catch (error) {
                 console.error("Create product error:", error);
@@ -88,12 +86,10 @@ const ManageProduct = () => {
         try {
             let imageUrl = "";
 
-            // Check if an image file exists and upload it
             if (product?.image && product?.image[0]) {
                 const formData = new FormData();
                 formData.append("image", product?.image[0]);
 
-                // Use the fetch API to upload the image to ImgBB
                 const response = await fetch(
                     `https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`,
                     {
@@ -102,18 +98,13 @@ const ManageProduct = () => {
                     }
                 );
 
-                // Parse the JSON response
                 const result = await response.json();
-
-                // Store the image URL from the upload response
-                imageUrl = result.data.url;
+                imageUrl = result?.data?.url;
             }
 
-            // Create an object that conforms to { id: string; data: Partial<TUpdateProductRequest> }
             const updatedRequest = {
-                id: product._id, // Use the product ID for identification
+                id: product._id,
                 data: {
-                    // Construct a partial object of type TUpdateProductRequest
                     name: product.name,
                     price: product.price,
                     description: product.description,
@@ -122,24 +113,38 @@ const ManageProduct = () => {
                     stock: product.stock,
                     brand: product.brand,
                     rating: product.rating,
-                    image: imageUrl || product.image, // Use the uploaded image URL or the existing one
+                    image: imageUrl || product.image,
                 },
             };
 
             console.log("Updated product request:", updatedRequest);
 
-            // Call the updateProduct function with the correct argument shape
-            await updateProduct(updatedRequest).unwrap(); // Unwrap the promise to handle errors
-
-            // Show a success toast notification
-            toast.success("Product updated successfully!");
-            navigate("/all-products");
-            // Refetch data to update the UI
+            await updateProduct(updatedRequest).unwrap();
             refetch();
+            window.location.reload();
+
+            toast.success("Product updated successfully!");
         } catch (error) {
-            // Log and notify about any errors during the update process
             console.error("Update product error:", error);
             toast.error("Failed to update product");
+        }
+    };
+
+    // New function for handling deletion
+    const handleDelete = async (productId: string) => {
+        console.log(productId);
+        try {
+            // Confirmation dialog (optional)
+            if (
+                window.confirm("Are you sure you want to delete this product?")
+            ) {
+                await deleteProduct(productId).unwrap(); // Call delete mutation
+                toast.success("Product deleted successfully!");
+                refetch(); // Refetch products to update the UI
+            }
+        } catch (error) {
+            console.error("Delete product error:", error);
+            toast.error("Failed to delete product");
         }
     };
 
@@ -150,7 +155,7 @@ const ManageProduct = () => {
                 className="bg-amber-100 bg-no-repeat bg-top"
                 style={{ backgroundImage: `url(${image10})` }}
             >
-                <div className="mx-auto max-w-screen-lg py-28">
+                <div className="mx-auto max-w-screen-lg py-24">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div
                             className="bg-orange-900 text-white p-8 bg-cover bg-no-repeat"
@@ -159,7 +164,7 @@ const ManageProduct = () => {
                             <h1 className="text-4xl font-light">
                                 Manage Products
                             </h1>
-                            <p className="text-xl font-medium mb-2">
+                            <p className="text-xl font-medium mb-2 animate-animated animate__fadeInUp">
                                 Add new product
                             </p>
                             <form
@@ -183,7 +188,7 @@ const ManageProduct = () => {
                                 <input
                                     type="text"
                                     {...register("name", {
-                                        required: "Product name is required",
+                                        // required: "Product name is required",
                                     })}
                                     placeholder="Product Name"
                                     className="border p-2 w-full text-white bg-black"
@@ -372,17 +377,22 @@ const ManageProduct = () => {
                                     <span>Price: {product.price}</span>
                                     <div>
                                         <Dialog>
-                                            <DialogTrigger>
+                                            <DialogTrigger asChild>
                                                 <button className="mr-2 border-2 text-white px-2 hover:bg-white transition duration-700 ease-in-out hover:text-orange-800">
                                                     Edit
                                                 </button>
                                             </DialogTrigger>
                                             <DialogContents
                                                 product={product}
-                                                handleUpdate={handleUpdate} // Pass handleUpdate function
+                                                handleUpdate={handleUpdate}
                                             />
                                         </Dialog>
-                                        <button className="border-2 text-white px-2 hover:bg-white transition duration-700 ease-in-out hover:text-orange-800">
+                                        <button
+                                            onClick={() =>
+                                                handleDelete(product._id)
+                                            }
+                                            className="border-2 text-white px-2 hover:bg-white transition duration-700 ease-in-out hover:text-orange-800"
+                                        >
                                             Delete
                                         </button>
                                     </div>

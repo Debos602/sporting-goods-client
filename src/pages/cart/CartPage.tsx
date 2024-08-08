@@ -46,7 +46,7 @@ const CartPage: React.FC = () => {
     return (
         <>
             <GlobalImage />
-            <div className="bg-amber-200 bg-opacity-50 py-10">
+            <div className="bg-amber-200 bg-opacity-50 py-10 bg-shad">
                 <Table className="max-w-screen-lg mx-auto">
                     {cartItems.length === 0 ? (
                         <p className="text-xl text-center py-20 text-orange-700">
