@@ -44,6 +44,7 @@ export const baseApi = createApi({
                 method: "POST",
                 body: newProduct,
             }),
+            invalidatesTags: ["product"],
         }),
         createOrder: builder.mutation<TOrderResponse, TOrderRequest>({
             query: (newOrder) => ({

@@ -6,6 +6,7 @@ import {
     useCreateProductMutation,
     useUpdateProductMutation,
     useDeleteProductMutation,
+    baseApi,
 } from "@/redux/api/baseApi";
 import { TCreateProductRequest, TProducts } from "@/types";
 import ManagImage from "../Shared/globalImage/ManagImage";
@@ -25,7 +26,12 @@ import useNav from "@/hooks/UserNav";
 const IMGBB_API_KEY = "09bd3d3e0869a6943ef1ad6d74606666";
 
 const ManageProduct = () => {
-    const { data: productResponse, refetch } = useGetProductQuery([]);
+    const { data: productResponse, refetch } = useGetProductQuery(
+        {},
+        {
+            refetchOnMountOrArgChange: true,
+        }
+    );
     // const navigate = useNavigate();
     const [createProduct] = useCreateProductMutation();
     const [updateProduct] = useUpdateProductMutation();
@@ -68,6 +74,9 @@ const ManageProduct = () => {
 
             try {
                 await createProduct(productData).unwrap();
+                setTimeout(() => {
+                    refetch();
+                }, 1000);
 
                 toast.success("Product created successfully", {
                     position: "top-center",
@@ -79,13 +88,12 @@ const ManageProduct = () => {
                         border: "2px solid white",
                     },
                 });
+                baseApi.util.invalidateTags(["product"]);
                 refetch();
             } catch (error) {
                 console.error("Create product error:", error);
                 toast.error("Failed to create product");
             }
-
-            refetch();
             reset();
             toast.success("Product created successfully", {
                 position: "top-center",
@@ -139,6 +147,9 @@ const ManageProduct = () => {
             };
 
             await updateProduct(updatedRequest).unwrap();
+            setTimeout(() => {
+                refetch();
+            }, 1000);
             toast.success("Product updated successfully", {
                 position: "top-center",
                 style: {
@@ -149,8 +160,8 @@ const ManageProduct = () => {
                     border: "2px solid white",
                 },
             });
+            baseApi.util.invalidateTags(["product"]);
             refetch();
-            window.location.reload();
         } catch (error) {
             console.error("Update product error:", error);
             toast.error("Failed to update product");

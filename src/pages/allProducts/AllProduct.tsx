@@ -8,7 +8,12 @@ import { Parallax } from "react-parallax";
 import useNav from "@/hooks/UserNav";
 
 const AllProduct = () => {
-    const { data: products, isLoading } = useGetProductQuery({});
+    const { data: products, isLoading } = useGetProductQuery(
+        {},
+        {
+            refetchOnMountOrArgChange: true,
+        }
+    );
     const [searchTerm, setSearchTerm] = useState("");
     const [filters, setFilters] = useState({
         category: "",

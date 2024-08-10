@@ -25,7 +25,7 @@ const router = createBrowserRouter([
                 element: <About />,
             },
             {
-                path: "/all-products",
+                path: "/api/all-product",
                 element: <AllProduct />,
             },
             {

@@ -52,7 +52,7 @@ const Navbar = () => {
             <NavigationMenuItem className="p-2 ml-[4px]">
                 <NavigationMenuLink asChild>
                     <Link
-                        to="/all-products"
+                        to="/api/all-product"
                         className={`${navigationMenuTriggerStyle} max-lg:ml-10 font-bold text-2xl hover:border-b-2 border-white`}
                     >
                         All-products
