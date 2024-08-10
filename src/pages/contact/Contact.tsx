@@ -41,7 +41,7 @@ const ContactUs: React.FC = () => {
 
     return (
         <div
-            className="bg-amber-100 py-16"
+            className="bg-amber-100 py-16 px-5 xl:px-0"
             style={{ backgroundImage: `url(${image11})` }}
         >
             {" "}

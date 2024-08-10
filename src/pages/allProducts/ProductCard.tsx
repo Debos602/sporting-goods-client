@@ -46,7 +46,7 @@ const ProductCard = ({
             style={{ animationDelay }}
         >
             {" "}
-            <Card className="w-full border-2 border-orange-800 hover:scale-105 duration-300 hover:bg-gradient-to-b  text-black p-3 shadow-orange-950 bg-gradient-to-t from-amber-200 to-amber-100 relative pb-10">
+            <Card className="border-2 p-3 border-orange-800 hover:scale-105 duration-300 hover:bg-gradient-to-b  text-black shadow-orange-950 bg-gradient-to-t from-amber-200 to-amber-100 relative">
                 <img
                     src={image}
                     className="object-contain max-h-[170px] w-full mb-2 "
@@ -102,12 +102,12 @@ const ProductCard = ({
                         </span>
                     </div>
                 </CardContent>
-                <CardFooter className="p-0 ">
+                <CardFooter className="p-0">
                     <Link
-                        className="font-bold absolute bottom-3 left-1/2	translate-x-[-50%] z-10 p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-[212px] text-center py-1"
+                        className="font-bold   uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500  w-full text-center"
                         to={`/cart/${_id}`}
                     >
-                        Detailed view{" "}
+                        Detailes view{" "}
                     </Link>
                 </CardFooter>
             </Card>

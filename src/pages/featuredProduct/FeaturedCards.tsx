@@ -42,7 +42,7 @@ const FeaturedCards = ({ categoryProduct, index }: FeaturedCardsProps) => {
         triggerOnce: true,
     });
 
-    const animationDelay = `${index * 100}ms`;
+    const animationDelay = `${index * 50}ms`;
 
     return (
         <div
@@ -98,7 +98,7 @@ const FeaturedCards = ({ categoryProduct, index }: FeaturedCardsProps) => {
                 </CardContent>
                 <CardFooter className="p-0">
                     <Link
-                        className="font-bold p-0 uppercase border-2 absolute bottom-3 left-1/2 translate-x-[-50%] hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-[295px] text-center py-1"
+                        className="font-bold p-0 uppercase border-2 absolute bottom-3 left-1/2 translate-x-[-50%] hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-[312px] sm:w-[612px] md:w-[325px] lg:w-[290px] xl:w-[300px] text-center py-1"
                         to={`category/${category_id}`}
                     >
                         {" "}

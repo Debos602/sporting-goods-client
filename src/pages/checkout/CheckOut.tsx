@@ -73,10 +73,13 @@ const CheckOut: React.FC = () => {
 
             // Show success toast
             toast.success("Order placed successfully!", {
-                duration: 4000,
+                position: "top-center",
                 style: {
-                    background: "#4caf50",
-                    color: "#fff",
+                    background: "#451a03",
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: "1rem",
+                    border: "2px solid white",
                 },
             });
 
@@ -114,7 +117,7 @@ const CheckOut: React.FC = () => {
         <>
             <GlobalImages />
             <div className="bg-amber-200  bg-opacity-50 bg-shad">
-                <div className="max-w-screen-lg mx-auto py-16 ">
+                <div className="max-w-screen-lg mx-auto py-16 px-5 xl:px-0">
                     <h2 className="text-4xl text-orange-800 font-bold text-start uppercase mb-3">
                         Checkout
                     </h2>

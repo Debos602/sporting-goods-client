@@ -23,7 +23,7 @@ const AboutUs: React.FC = () => {
                     <h2 className="text-4xl font-extrabold text-gray-900 mb-6 ">
                         About Us
                     </h2>
-                    <p className="text-lg font-semibold text-gray-800 leading-relaxed animate__animated animate__fadeInUp">
+                    <p className="text-lg font-semibold text-gray-800 leading-relaxed animate__animated animate__fadeInUp animation__delay-1s">
                         We are a premier provider of top-notch sports goods,
                         dedicated to assisting our customers in achieving their
                         fitness aspirations. Our legacy spans over a decade,
@@ -31,10 +31,10 @@ const AboutUs: React.FC = () => {
                         and fitness enthusiasts, offering a diverse range of
                         high-quality products.
                     </p>
-                    <h3 className="text-3xl font-semibold text-gray-900 my-6 animate__animated animate__fadeInUp">
+                    <h3 className="text-3xl font-semibold text-gray-900 my-6 animate__animated animate__fadeInUp animation__delay-2s">
                         Mission & Vision
                     </h3>
-                    <div className=" animate__animated animate__fadeInUp">
+                    <div className=" animate__animated animate__fadeInUp animation__delay-3s">
                         <h4 className="text-2xl font-semibold text-gray-800 mb-2">
                             Our Mission
                         </h4>
@@ -64,19 +64,25 @@ const AboutUs: React.FC = () => {
                 {/* Mission and Vision Statements Section */}
                 {/* <section className="bg-gray-50 p-8 rounded-lg shadow-lg mb-12"></section> */}
                 {/* Our Team Section */}
-                <div
-                    ref={ref}
-                    className={`${
-                        inView ? "animate__animated animate__fadeInUp" : ""
-                    }`}
-                ></div>
-                <section className="p-8 border border-amber-200  rounded-lg shadow-lg mb-12">
-                    <h3 className="text-3xl font-semibold text-gray-900 mb-6">
+
+                <section className="p-8 border border-amber-200  rounded-lg shadow-lg mb-12 relative">
+                    <h3
+                        className={`text-3xl font-semibold text-gray-900 mb-6 ${
+                            inView && "animate__animated animate__fadeInUp"
+                        }`}
+                    >
                         Meet Our Team
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
                         {/* Team Member 1 */}
-                        <div className=" p-6 rounded-lg shadow-lg text-center border-amber-200 border">
+                        <div
+                            ref={ref}
+                            className={`p-6 rounded-lg shadow-lg text-center border-amber-200 border ${
+                                inView
+                                    ? "animate__animated animate__fadeInUp"
+                                    : ""
+                            }`}
+                        >
                             <img
                                 src={Image}
                                 alt="John Doe"
@@ -96,7 +102,15 @@ const AboutUs: React.FC = () => {
                         </div>
 
                         {/* Team Member 2 */}
-                        <div className=" p-6 rounded-lg shadow-lg text-center border-amber-200 border">
+                        <div
+                            ref={ref}
+                            className={`p-6 rounded-lg shadow-lg text-center border-amber-200 border ${
+                                inView
+                                    ? "animate__animated animate__fadeInUp animate__delay-2s"
+                                    : ""
+                            }`}
+                            style={{ animationDelay: "0.1s" }}
+                        >
                             <img
                                 src={Image2}
                                 alt="Jane Smith"
@@ -116,7 +130,15 @@ const AboutUs: React.FC = () => {
                         </div>
 
                         {/* Team Member 3 */}
-                        <div className=" p-6 rounded-lg shadow-lg text-center border-amber-200 border">
+                        <div
+                            ref={ref}
+                            className={` p-6 rounded-lg shadow-lg text-center border-amber-200 border ${
+                                inView
+                                    ? "animate__animated animate__fadeInUp"
+                                    : ""
+                            }`}
+                            style={{ animationDelay: "0.2s" }}
+                        >
                             <img
                                 src={Image3}
                                 alt="Michael Brown"
@@ -137,7 +159,13 @@ const AboutUs: React.FC = () => {
                     </div>
                 </section>
                 {/* Contact Information Section */}
-                <section className="p-8 rounded-lg shadow-lg mb-12 border-amber-200 border">
+                <section
+                    ref={ref}
+                    className={`p-8 rounded-lg shadow-lg mb-12 border-amber-200 border ${
+                        inView ? "animate__animated animate__fadeInUp" : ""
+                    }`}
+                    style={{ animationDelay: "0.3s" }}
+                >
                     <h3 className="text-3xl font-semibold text-gray-900 mb-6">
                         Contact Information
                     </h3>

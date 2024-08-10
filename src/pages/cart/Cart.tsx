@@ -13,6 +13,8 @@ import { addToCart, selectCartItems } from "@/redux/cartSlice";
 import GlobalImage from "../Shared/globalImage/GlobalImage";
 
 import { Button } from "@/components/ui/button";
+import { useInView } from "react-intersection-observer";
+import { toast } from "sonner";
 
 const Cart: React.FC = () => {
     const { id: _id } = useParams<{ id: string }>();
@@ -20,6 +22,10 @@ const Cart: React.FC = () => {
     const { data: productData, isLoading } = useGetSingleProductQuery(
         _id as string
     );
+    const { ref, inView } = useInView({
+        threshold: 0.1,
+        triggerOnce: true,
+    });
 
     const dispatch = useDispatch<AppDispatch>();
     const cartItems = useSelector((state: RootState) => selectCartItems(state));
@@ -42,10 +48,10 @@ const Cart: React.FC = () => {
     }
 
     const product = productData?.data;
-    // console.log(product);
+
     const { name, description, category, brand, stock, rating, price, image } =
         product;
-    console.log(product);
+
     const handleCartPage = () => {
         navigate("/cartpage");
     };
@@ -70,7 +76,16 @@ const Cart: React.FC = () => {
             );
         }
 
-        console.log(`Product ${name} added to cart!`);
+        toast.success(`Product ${name} added to cart!`, {
+            position: "top-center",
+            style: {
+                background: "#451a03",
+                color: "white",
+                fontWeight: "bold",
+                fontSize: "1rem",
+                border: "2px solid white",
+            },
+        });
     };
 
     const getStarColor = (ratingValue: number) => {
@@ -95,7 +110,11 @@ const Cart: React.FC = () => {
                 style={{ backgroundImage: `url(${bgImage})` }}
             >
                 <div className="max-w-screen-lg mx-auto">
-                    <h2 className="text-4xl font-semibold text-white relative z-20 mb-10  inline-block">
+                    <h2
+                        className={`text-4xl ps-5 lg:ps-0 font-semibold text-white relative z-20 mb-10  inline-block ${
+                            inView ? "animate__animated animate__fadeInUp" : ""
+                        }`}
+                    >
                         Details Sports Goods
                     </h2>
                 </div>
@@ -103,18 +122,31 @@ const Cart: React.FC = () => {
                     <div className="absolute inset-0 bg-gray-900 bg-opacity-50 h-full w-full"></div>
                     <div className="max-w-screen-lg mx-auto relative z-20 w-full bg-orange-100 shadow-lg  p-8">
                         <div className="flex flex-col md:flex-row">
-                            <div className="w-full md:w-1/2 border-2 border-orange-800 mr-5 bg-gradient-to-t from-amber-200 to-transparent overflow-hidden">
+                            <div
+                                ref={ref}
+                                className={`w-full md:w-1/2 border-2 border-orange-800 mr-5 bg-gradient-to-t from-amber-200 to-transparent overflow-hidden ${
+                                    inView
+                                        ? "animate__animated animate__fadeInLeft"
+                                        : ""
+                                }`}
+                            >
                                 <PhotoProvider>
                                     <PhotoView src={image}>
                                         <img
                                             src={image}
                                             alt={name}
-                                            className="h-full w-full p-2 object-cover cursor-pointer transition-transform transform hover:scale-105"
+                                            className=" p-2 w-full  object-cover cursor-pointer transition-transform transform hover:scale-105"
                                         />
                                     </PhotoView>
                                 </PhotoProvider>
                             </div>
-                            <div className="w-full md:w-1/2 p-8 border-2 border-orange-800 bg-gradient-to-t from-amber-200 to-transparent">
+                            <div
+                                className={`w-full md:w-1/2 p-8 border-2 border-orange-800 bg-gradient-to-t from-amber-200 to-transparent ${
+                                    inView
+                                        ? "animate__animated animate__fadeInRight"
+                                        : ""
+                                }`}
+                            >
                                 <h1 className="text-3xl font-bold text-gray-900 mb-4">
                                     {name}
                                 </h1>
@@ -168,7 +200,7 @@ const Cart: React.FC = () => {
                                 <div className="flex justify-between">
                                     <button
                                         onClick={handleAddToCart}
-                                        className={`bg-orange-700 text-white hover:bg-white border-2 border-orange-800 uppercase py-2 px-4  hover:text-orange-700 font-semibold transition duration-300 ease-in-out ${
+                                        className={`bg-orange-700 text-white  hover:bg-white border-2 border-orange-800 uppercase py-2 px-4  hover:text-orange-700 font-semibold transition duration-300 ease-in-out ${
                                             (existingItem?.stock ?? 0) >= stock
                                                 ? "opacity-50 cursor-not-allowed"
                                                 : ""

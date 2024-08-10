@@ -89,7 +89,7 @@ const AllProduct = () => {
                 strength={-200} // Adjust strength as needed
             >
                 <div className="parallax-overlay"></div>
-                <div className="parallax-content max-w-screen-lg mx-auto py-16">
+                <div className="parallax-content max-w-screen-lg mx-auto py-16 px-5 xl:px-0">
                     <div className="mb-4 flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0 gap-2">
                         <input
                             type="text"
@@ -165,7 +165,7 @@ const AllProduct = () => {
                             Clear Filters
                         </button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                         {filteredProducts?.map(
                             (product: TProducts, index: number) => (
                                 <ProductCard

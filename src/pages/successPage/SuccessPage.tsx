@@ -9,17 +9,17 @@ const SuccessPage = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-            <h1 className="text-2xl font-semibold mb-4">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-amber-100">
+            <h1 className="text-3xl font-semibold mb-4">
                 Order Placed Successfully!
             </h1>
-            <p className="mb-8 text-center">
+            <p className="mb-8 text-xl text-center font-serif">
                 Your order has been placed successfully. Thank you for shopping
                 with us!
             </p>
             <button
                 onClick={handleGoHome}
-                className="bg-blue-500 text-white p-2 rounded"
+                className="bg-orange-900  px-5 uppercase text-white p-2 hover:bg-white duration-700 border-2 hover:text-orange-900 hover:border-orange-900"
             >
                 Go To Home
             </button>

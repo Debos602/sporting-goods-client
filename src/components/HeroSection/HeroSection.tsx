@@ -56,17 +56,17 @@ const HeroSection = () => {
                                         alt={`Slider Image ${slider.id}`}
                                     />
                                     <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-4">
-                                        <h2 className="text-white font-semibold text-4xl mb-4 mt-28 animate__animated animate__fadeInUp">
+                                        <h2 className="text-white font-semibold text-2xl md:text-4xl mb-4 mt-28 animate__animated animate__fadeInUp">
                                             {slider.title} <br />
                                             <span className="uppercase font-bold text-orange-600 animate__animated animate__fadeInUp animate__delay-1s">
                                                 {slider.subtitle}
                                             </span>
                                             !
                                         </h2>
-                                        <p className="text-white text-lg mb-6 max-w-2xl animate__animated animate__fadeInUp animate__delay-1s">
+                                        <p className="text-white text-sm md:text-lg mb-6 max-w-xl md:max-w-2xl  animate__animated animate__fadeInUp animate__delay-1s">
                                             {slider.description}
                                         </p>
-                                        <Button className="bg-orange-400 text-white font-semibold hover:bg-white hover:text-amber-600 uppercase px-4 py-2 rounded-full transition-transform duration-300 hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s">
+                                        <Button className="bg-orange-400  text-white font-normal md:font-semibold hover:bg-white hover:text-amber-600 uppercase px-4 py-2 rounded-full transition-transform duration-300 hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s">
                                             Check Products Below
                                         </Button>
                                     </div>

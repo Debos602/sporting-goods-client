@@ -3,13 +3,12 @@ import Footer from "@/pages/Shared/Footer";
 import Navbar from "@/pages/Shared/Navbar";
 import { Outlet } from "react-router-dom";
 import Lenis, { LenisOptions } from "@studio-freight/lenis";
-// Import the wrapper
 
+import { Toaster } from "sonner";
 import "animate.css/animate.css";
 import "./MainLayout.css";
-import AnimatedWrapper from "@/wrapper/AnimatedWrapper";
 
-const MainLayout = () => {
+const MainLayout = ({ children }: { children: React.ReactNode }) => {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
@@ -40,16 +39,13 @@ const MainLayout = () => {
     return (
         <>
             <Navbar />
-            <AnimatedWrapper
-                animateIn="fadeIn"
-                animateOut="fadeOut"
-                animateInDuration={800}
-                animateOutDuration={800}
-            >
-                <main data-lenis>
-                    <Outlet />
-                </main>
-            </AnimatedWrapper>
+
+            <main data-lenis>
+                <Outlet />
+                {children}
+                <Toaster />
+            </main>
+
             <Footer />
         </>
     );
