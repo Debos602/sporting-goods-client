@@ -113,7 +113,7 @@ const ProductCard = ({
                         className="font-bold uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-full text-center"
                         to={`/cart/${_id}`}
                     >
-                        Details View
+                        View Details
                     </Link>
                 </CardFooter>
             </Card>

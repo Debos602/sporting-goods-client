@@ -2,6 +2,7 @@ import MainLayout from "@/components/layout/MainLayout";
 import About from "@/pages/about/About";
 import AllProduct from "@/pages/allProducts/AllProduct";
 import Cart from "@/pages/cart/Cart";
+
 import CartPage from "@/pages/cart/CartPage";
 import CheckOut from "@/pages/checkout/CheckOut";
 import ContactUs from "@/pages/contact/Contact";
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
                 element: <About />,
             },
             {
-                path: "/api/all-product",
+                path: "/all-product",
                 element: <AllProduct />,
             },
             {

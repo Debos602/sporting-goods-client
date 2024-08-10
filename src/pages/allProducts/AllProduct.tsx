@@ -14,6 +14,7 @@ const AllProduct = () => {
             refetchOnMountOrArgChange: true,
         }
     );
+    console.log(products);
     const [searchTerm, setSearchTerm] = useState("");
     const [filters, setFilters] = useState({
         category: "",

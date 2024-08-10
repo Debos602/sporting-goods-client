@@ -48,28 +48,35 @@ const SingleProduct: React.FC = () => {
 
     // Ensure response is valid and handle data
     const products = response?.data || []; // Access the `data` property of the response
-
+    console.log(products);
     return (
         <div className="bg-amber-50 py-4 md:py-8 lg:py-8 px-5 ">
             <div className=" mt-10 max-w-screen-lg mx-auto ">
                 <div className="container mx-auto py-8">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
                         {products?.map((product: TProducts) => (
-                            <Card className="w-full border-2 border-orange-800 text-black p-3 shadow-orange-950 bg-gradient-to-t from-amber-200 to-transparent">
+                            <Card
+                                key={product?._id} // Add a key prop for React's reconciliation process
+                                className="w-full border-2 border-orange-800 text-black p-3 shadow-orange-950 bg-gradient-to-t from-amber-200 to-transparent"
+                            >
                                 <img
                                     src={product?.image}
-                                    className="object-contain max-h-[250px] w-full mb-2 "
-                                    alt=""
+                                    className="object-contain max-h-[250px] w-full mb-2"
+                                    alt={product?.name || "Product Image"}
                                 />
                                 <CardHeader className="p-0">
                                     <CardTitle className="mb-2">
-                                        {product?.name}
+                                        {product?.name || "Product Name"}
                                     </CardTitle>
+
                                     <CardDescription>
                                         <span className="font-semibold">
                                             Description:
-                                        </span>{" "}
-                                        {product?.description.substring(0, 35)}
+                                        </span>
+                                        {product?.description?.substring(
+                                            0,
+                                            35
+                                        ) || "No description available"}
                                         ...
                                     </CardDescription>
                                 </CardHeader>
@@ -77,26 +84,26 @@ const SingleProduct: React.FC = () => {
                                     <p className="text-md font-semibold">
                                         Brand:{" "}
                                         <span className="text-base">
-                                            {product?.brand.substring(0, 3)}
+                                            {product?.brand?.substring(0, 3) ||
+                                                "N/A"}
                                         </span>
                                     </p>
                                     <p className="text-md font-semibold">
-                                        Price:
+                                        Price:{" "}
                                         <span className="text-base">
-                                            {product?.price}
+                                            {product?.price || "N/A"}
                                         </span>
                                     </p>
                                     <p className="text-md font-semibold">
-                                        Rating:
-                                        <span className="text-base	">
-                                            {" "}
-                                            {product?.rating}
+                                        Rating:{" "}
+                                        <span className="text-base">
+                                            {product?.rating || "N/A"}
                                         </span>
                                     </p>
                                     <p className="text-md font-semibold">
-                                        Stock:
-                                        <span className="text-base	">
-                                            {product?.stock}
+                                        Stock:{" "}
+                                        <span className="text-base">
+                                            {product?.stock || "N/A"}
                                         </span>
                                     </p>
                                 </CardContent>
@@ -105,7 +112,7 @@ const SingleProduct: React.FC = () => {
                                         className="font-bold p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-full text-center py-1"
                                         to={`/cart/${product?._id}`}
                                     >
-                                        Details view{" "}
+                                        View Details
                                     </Link>
                                 </CardFooter>
                             </Card>
