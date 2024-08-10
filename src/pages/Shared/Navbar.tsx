@@ -83,7 +83,7 @@ const Navbar = () => {
     );
     //   bg-transparent
     return (
-        <div className="border-b-2 bg-amber-950 bg-opacity-90 fixed top-0 left-0 w-full z-30 px-5 md:px-5 lg:px-0">
+        <div className="border-b-2 bg-amber-950 bg-opacity-90 fixed top-0 left-0 w-full z-30 px-5 md:px-5 xl:px-0">
             <div className="flex justify-between items-center max-w-screen-lg mx-auto ">
                 {/* Hamburger Menu Icon for Mobile */}
                 <div className="flex">

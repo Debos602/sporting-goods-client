@@ -61,9 +61,9 @@ const CartPage: React.FC = () => {
             <div className="bg-amber-200 bg-opacity-50 py-10 bg-shad">
                 <Table className="max-w-screen-lg mx-auto w-full px-4 sm:px-6 lg:px-8">
                     {cartItems.length === 0 ? (
-                        <span className="text-xl sm:text-2xl text-center py-20 text-orange-700">
+                        <thead className="text-xl sm:text-2xl text-center py-20 text-orange-700">
                             Your cart is empty.
-                        </span>
+                        </thead>
                     ) : (
                         <>
                             <thead>

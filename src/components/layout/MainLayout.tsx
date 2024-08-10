@@ -8,7 +8,7 @@ import { Toaster } from "sonner";
 import "animate.css/animate.css";
 import "./MainLayout.css";
 
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
+const MainLayout = () => {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 
             <main data-lenis>
                 <Outlet />
-                {children}
+
                 <Toaster />
             </main>
 

@@ -105,7 +105,7 @@ const SingleProduct: React.FC = () => {
                                         className="font-bold p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-full text-center py-1"
                                         to={`/cart/${product?._id}`}
                                     >
-                                        Detailed view{" "}
+                                        Details view{" "}
                                     </Link>
                                 </CardFooter>
                             </Card>

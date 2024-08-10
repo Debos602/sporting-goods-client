@@ -13,7 +13,7 @@ import {
 export const baseApi = createApi({
     reducerPath: "baseApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:5000/api",
+        baseUrl: "https://sportings-goods-server.vercel.app/api",
     }),
     tagTypes: ["category", "product"],
     endpoints: (builder) => ({
@@ -27,12 +27,12 @@ export const baseApi = createApi({
         }),
         getGroupProduct: builder.query<TProductsResponse, string>({
             query: (category_id) => `/category/${category_id}`,
-            providesTags: (result, error, category_id) =>
+            providesTags: (result, _error, category_id) =>
                 result ? [{ type: "product", id: category_id }] : [],
         }),
         getSingleProduct: builder.query<TProductDetails, string>({
             query: (_id) => `/all-product/${_id}`,
-            providesTags: (result, error, _id) =>
+            providesTags: (result, _error, _id) =>
                 result ? [{ type: "product", id: _id }] : [],
         }),
         createProduct: builder.mutation<
@@ -69,7 +69,7 @@ export const baseApi = createApi({
                 method: "PATCH",
                 body: data,
             }),
-            invalidatesTags: (result, error, { id }) => [
+            invalidatesTags: (_result, _error, { id }) => [
                 { type: "product", id },
             ],
         }),
