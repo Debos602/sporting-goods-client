@@ -20,7 +20,7 @@ declare module "react-rating" {
     }
 
     interface RatingComponent extends React.FC<ReactRatingProps> {
-        clear: () => void; // Example of additional method
+        clear: () => void;
     }
 
     const Rating: RatingComponent;

@@ -1,7 +1,9 @@
+import useNav from "@/hooks/UserNav";
 import { useNavigate } from "react-router-dom";
 
 const SuccessPage = () => {
     const navigate = useNavigate();
+    useNav("SuccessPage");
 
     const handleGoHome = () => {
         navigate("/", { replace: true });

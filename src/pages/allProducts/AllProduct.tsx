@@ -5,6 +5,7 @@ import { useGetProductQuery } from "@/redux/api/baseApi";
 import GlobalImage from "../Shared/globalImage/GlobalImage";
 import image12 from "../../assets/images/image-12.avif";
 import { Parallax } from "react-parallax";
+import useNav from "@/hooks/UserNav";
 
 const AllProduct = () => {
     const { data: products, isLoading } = useGetProductQuery({});
@@ -16,6 +17,8 @@ const AllProduct = () => {
         priceRange: [0, 1000],
     });
     const [sortOrder, setSortOrder] = useState("");
+
+    useNav("All Products");
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);

@@ -54,7 +54,7 @@ const FeaturedProduct = () => {
                                 (categoryProduct: TProducts, index: number) => (
                                     <FeaturedCards
                                         index={index}
-                                        key={categoryProduct.category_id}
+                                        key={categoryProduct._id}
                                         categoryProduct={categoryProduct}
                                     />
                                 )

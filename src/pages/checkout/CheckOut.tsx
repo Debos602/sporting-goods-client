@@ -12,6 +12,7 @@ import {
 import "./CheckOut.css";
 import { useDispatch } from "react-redux";
 import { clearCart } from "@/redux/cartSlice";
+import useNav from "@/hooks/UserNav";
 
 const CheckOut: React.FC = () => {
     const navigate = useNavigate();
@@ -31,6 +32,8 @@ const CheckOut: React.FC = () => {
     const [createOrder] = useCreateOrderMutation();
     const [updateProduct] = useUpdateProductMutation();
     const [trigger, { isLoading }] = useLazyGetProductsQuery(); // Destructure correctly
+
+    useNav("CheckOut");
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
         if (!data.termsAgreed) {

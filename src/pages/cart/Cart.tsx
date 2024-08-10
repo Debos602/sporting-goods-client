@@ -15,6 +15,7 @@ import GlobalImage from "../Shared/globalImage/GlobalImage";
 import { Button } from "@/components/ui/button";
 import { useInView } from "react-intersection-observer";
 import { toast } from "sonner";
+import useNav from "@/hooks/UserNav";
 
 const Cart: React.FC = () => {
     const { id: _id } = useParams<{ id: string }>();
@@ -27,6 +28,7 @@ const Cart: React.FC = () => {
         triggerOnce: true,
     });
 
+    useNav("Product-Details");
     const dispatch = useDispatch<AppDispatch>();
     const cartItems = useSelector((state: RootState) => selectCartItems(state));
     const existingItem = cartItems.find((item) => item.id === _id);

@@ -5,12 +5,15 @@ import Image3 from "../../assets/images/image-6.jpg";
 // import image10 from "../../assets/images/imag-10.png";
 import image11 from "../../assets/images/image-11.png";
 import { useInView } from "react-intersection-observer";
+import useNav from "@/hooks/UserNav";
 
 const AboutUs: React.FC = () => {
     const { ref, inView } = useInView({
         threshold: 0.1,
         triggerOnce: true,
     });
+
+    useNav("About Us");
 
     return (
         <div

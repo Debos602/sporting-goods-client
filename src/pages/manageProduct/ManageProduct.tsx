@@ -19,6 +19,7 @@ import { toast } from "sonner";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import DialogContents from "./DialogContents";
 import { useInView } from "react-intersection-observer";
+import useNav from "@/hooks/UserNav";
 // import { useNavigate } from "react-router-dom";
 
 const IMGBB_API_KEY = "09bd3d3e0869a6943ef1ad6d74606666";
@@ -29,6 +30,8 @@ const ManageProduct = () => {
     const [createProduct] = useCreateProductMutation();
     const [updateProduct] = useUpdateProductMutation();
     const [deleteProduct] = useDeleteProductMutation();
+
+    useNav("Manage Products");
 
     const {
         register,
@@ -455,7 +458,7 @@ const ManageProduct = () => {
                             {productResponse?.data.map(
                                 (product: TProducts, index: number) => (
                                     <div
-                                        key={`${product.id}-${index}`}
+                                        key={`${product._id}-${index}`}
                                         className={`${
                                             listInView
                                                 ? "animate__animated animate__fadeInUpBig "
