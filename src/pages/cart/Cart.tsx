@@ -111,7 +111,7 @@ const Cart: React.FC = () => {
                 className="bg-cover bg-center relative z-10 py-16"
                 style={{ backgroundImage: `url(${bgImage})` }}
             >
-                <div className="max-w-screen-lg mx-auto">
+                <div className="max-w-screen-xl mx-auto">
                     <h2
                         className={`text-4xl ps-5 lg:ps-0 font-semibold text-white relative z-20 mb-10  inline-block ${
                             inView ? "animate__animated animate__fadeInUp" : ""
@@ -122,7 +122,7 @@ const Cart: React.FC = () => {
                 </div>
                 <div className="flex justify-center items-center ">
                     <div className="absolute inset-0 bg-gray-900 bg-opacity-50 h-full w-full"></div>
-                    <div className="max-w-screen-lg mx-auto relative z-20 w-full bg-orange-100 shadow-lg  p-8">
+                    <div className="max-w-screen-xl mx-auto relative z-20 w-full bg-orange-100 shadow-lg  p-8">
                         <div className="flex flex-col md:flex-row">
                             <div
                                 ref={ref}
@@ -143,7 +143,7 @@ const Cart: React.FC = () => {
                                 </PhotoProvider>
                             </div>
                             <div
-                                className={`w-full md:w-1/2 p-8 border-2 border-orange-800 bg-gradient-to-t from-amber-200 to-transparent ${
+                                className={`w-full md:w-1/2 px-8 py-32 border-2 border-orange-800 bg-gradient-to-t from-amber-200 to-transparent ${
                                     inView
                                         ? "animate__animated animate__fadeInRight"
                                         : ""

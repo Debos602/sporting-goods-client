@@ -11,7 +11,9 @@ import sliderImage2 from "../../assets/images/image-2.jpg";
 import sliderImage3 from "../../assets/images/image-3.jpg";
 import { Button } from "../ui/button";
 
+
 const HeroSection = () => {
+    
     const sliderImages = [
         {
             id: 1,
@@ -40,25 +42,21 @@ const HeroSection = () => {
     ];
 
     return (
-        <div className="relative w-full h-[596px] overflow-hidden">
-            <Carousel className="rounded-lg shadow-lg">
-                <CarouselContent className="flex">
+        <div className="overflow-hidden h-screen relative z-30" >
+            <Carousel>
+                <CarouselContent>
                     {sliderImages.map((slider) => (
                         <CarouselItem
-                            key={slider.id}
-                            className="min-w-full relative"
+                            key={slider.id} 
+                            className="min-w-full relative z-50"
                         >
-                            <Card className="bg-transparent">
-                                <CardContent className="flex items-center justify-center h-[596px] p-0">
-                                    <img
-                                        src={slider.image}
-                                        className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                                        alt={`Slider Image ${slider.id}`}
-                                    />
-                                    <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center p-4">
-                                        <h2 className="text-white font-semibold text-2xl md:text-4xl mb-4 mt-28 animate__animated animate__fadeInUp">
+                            <Card className="border-0">
+                                <CardContent className="flex items-center justify-center p-0 bg-cover bg-no-repeat h-screen min-w-full relative" style={{ backgroundImage: `url(${slider.image})` }}>
+                                   
+                                    <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center text-center p-4 z-10">
+                                        <h2 className="text-white font-semibold text-xl md:text-4xl mb-4 mt-28 animate__animated animate__fadeInUp animate__delay-1s">
                                             {slider.title} <br />
-                                            <span className="uppercase font-bold text-orange-600 animate__animated animate__fadeInUp animate__delay-1s">
+                                            <span className="uppercase font-medium text-orange-600 animate__animated animate__fadeInUp animate__delay-1s">
                                                 {slider.subtitle}
                                             </span>
                                             !
@@ -74,14 +72,17 @@ const HeroSection = () => {
                             </Card>
                         </CarouselItem>
                     ))}
+                       
                 </CarouselContent>
-                <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">
-                    &#9664;
-                </CarouselPrevious>
-                <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full cursor-pointer hover:bg-opacity-75 transition-opacity duration-300">
-                    &#9654;
-                </CarouselNext>
+                     <CarouselPrevious className="absolute left-5 top-[57%]  text-white bg-black p-2 rounded-full  cursor-pointer transition duration-300 ">
+                            &#9664;
+                    </CarouselPrevious>
+                    <CarouselNext className="absolute right-5 top-[57%] text-white bg-black  p-2 rounded-full cursor-pointer  transition duration-300 ">
+                            &#9654;
+                    </CarouselNext>
+             
             </Carousel>
+                 
         </div>
     );
 };

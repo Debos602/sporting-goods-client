@@ -63,7 +63,7 @@ export const baseApi = createApi({
         }),
         updateProduct: builder.mutation<
             void,
-            { id: string; data: Partial<TUpdateProductRequest> }
+            { id: string; data: Partial<TUpdateProductRequest>; }
         >({
             query: ({ id, data }) => ({
                 url: `/all-product/${id}`,

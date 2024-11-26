@@ -2,7 +2,6 @@ import React from "react";
 import Image from "../../assets/images/image-4-removebg-preview.png";
 import Image2 from "../../assets/images/image-5.jpg";
 import Image3 from "../../assets/images/image-6.jpg";
-// import image10 from "../../assets/images/imag-10.png";
 import image11 from "../../assets/images/image-11.png";
 import { useInView } from "react-intersection-observer";
 import useNav from "@/hooks/UserNav";
@@ -20,7 +19,7 @@ const AboutUs: React.FC = () => {
             className="bg-amber-100 bg-center"
             style={{ backgroundImage: `url(${image11})` }}
         >
-            <div className="mt-[99px] max-w-screen-lg mx-auto ">
+            <div className="mt-[99px] max-w-screen-xl mx-auto ">
                 {/* Company Information Section */}
                 <section className=" p-8 rounded-lg shadow-xl border-amber-200 border mb-12 animate__animated animate__fadeInUp">
                     <h2 className="text-4xl font-extrabold text-gray-900 mb-6 ">
@@ -64,11 +63,9 @@ const AboutUs: React.FC = () => {
                         </div>
                     </div>
                 </section>
-                {/* Mission and Vision Statements Section */}
-                {/* <section className="bg-gray-50 p-8 rounded-lg shadow-lg mb-12"></section> */}
-                {/* Our Team Section */}
 
-                <section className="p-8 border border-amber-200  rounded-lg shadow-lg mb-12 relative">
+                {/* Our Team Section */}
+                <section className="p-8 border border-amber-200 rounded-lg shadow-lg mb-12 relative">
                     <h3
                         className={`text-3xl font-semibold text-gray-900 mb-6 ${
                             inView && "animate__animated animate__fadeInUp"
@@ -81,9 +78,7 @@ const AboutUs: React.FC = () => {
                         <div
                             ref={ref}
                             className={`p-6 rounded-lg shadow-lg text-center border-amber-200 border ${
-                                inView
-                                    ? "animate__animated animate__fadeInUp"
-                                    : ""
+                                inView ? "animate__animated animate__fadeInUp" : ""
                             }`}
                         >
                             <img
@@ -161,6 +156,7 @@ const AboutUs: React.FC = () => {
                         </div>
                     </div>
                 </section>
+
                 {/* Contact Information Section */}
                 <section
                     ref={ref}
@@ -200,32 +196,38 @@ const AboutUs: React.FC = () => {
                         </div>
                     </div>
                 </section>
+
                 {/* Store Location Information */}
+                <section className="text-center pt-8 rounded-lg shadow-lg border-amber-200 border">
+                    <h3 className="text-3xl font-semibold text-gray-900 mb-6">
+                        Our Store Location
+                    </h3>
+                    <div>
+                        <h4 className="text-xl font-semibold text-orange-800 mb-2">
+                            Visit Us
+                        </h4>
+                        <p className="text-xl text-gray-700 mb-8">
+                            Feel free to visit our store and explore our wide range
+                            of sports products. Our team will be happy to assist
+                            you.
+                        </p>
+                        <div className="p-4 border border-amber-300 rounded-lg shadow-lg">
+                            <iframe
+                                title="Store Location Map"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232456.40609208417!2d-74.00597362231883!3d40.74189540056772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259af78fe1c51%3A0x38a96e3ab81669f9!2sNew%20York%2C%20NY%20USA!5e0!3m2!1sen!2sin!4v1616512219609!5m2!1sen!2sin"
+                                width="100%"
+                                height="400"
+                                loading="lazy"
+                                style={{
+                                    border: "0",
+                                    borderRadius: "12px",
+                                    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+                                }}  
+                            ></iframe>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <section className=" text-center pt-8 rounded-lg shadow-lg border-amber-200 border">
-                <h3 className="text-3xl font-semibold text-gray-900 mb-6">
-                    Our Store Location
-                </h3>
-                <div>
-                    <h4 className="text-xl font-semibold text-orange-800 mb-2">
-                        Visit Us
-                    </h4>
-                    <p className="text-xl text-gray-700 mb-8">
-                        Feel free to visit our store and explore our wide range
-                        of sports products. Our team will be happy to assist
-                        you.
-                    </p>
-                    <iframe
-                        title="Store Location Map"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.0130932239546!2d-122.08424968469241!3d37.4221765798256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb8e4d5300267%3A0x6c16514d8d1c5ab3!2sGoogleplex!5e0!3m2!1sen!2sus!4v1623943184892!5m2!1sen!2sus"
-                        width="100%"
-                        height="400"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading="lazy"
-                    ></iframe>
-                </div>
-            </section>
         </div>
     );
 };

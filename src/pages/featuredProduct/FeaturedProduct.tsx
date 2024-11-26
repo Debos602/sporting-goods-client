@@ -34,7 +34,7 @@ const FeaturedProduct = () => {
                 strength={-200}
             >
                 <div className="parallax-overlay"></div>
-                <div className="parallax-content max-w-screen-lg mx-auto py-11  md:py-16">
+                <div className="parallax-content max-w-screen-xl mx-auto py-11  md:py-16">
                     <div
                         ref={ref}
                         className={`flex items-center mb-10 ${
@@ -42,14 +42,14 @@ const FeaturedProduct = () => {
                         }`}
                     >
                         <h2 className=" text-xl ps-5 xl:ps-0 md:text-2xl font-bold text-white uppercase">
-                            Latest product
+                             Product Feature
                         </h2>
                         <FaRightLong className="ms-3 text-white" />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-5 xl:px-0">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-5 xl:px-0">
                         {products?.data
-                            ?.slice(0, 6)
+                            ?.slice(0,8)
                             .map(
                                 (categoryProduct: TProducts, index: number) => (
                                     <FeaturedCards

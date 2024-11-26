@@ -59,7 +59,7 @@ const CartPage: React.FC = () => {
         <>
             <GlobalImage />
             <div className="bg-amber-200 bg-opacity-50 py-10 bg-shad">
-                <Table className="max-w-screen-lg mx-auto w-full px-4 sm:px-6 lg:px-8">
+                <Table className="max-w-screen-xl mx-auto w-full px-4 sm:px-6 lg:px-8">
                     {cartItems.length === 0 ? (
                         <thead className="text-xl sm:text-2xl text-center py-20 text-orange-700">
                             Your cart is empty.
@@ -70,7 +70,7 @@ const CartPage: React.FC = () => {
                                 <TableRow>
                                     <TableCell
                                         colSpan={6}
-                                        className="text-center text-orange-700 uppercase text-2xl sm:text-3xl font-semibold border-b-2 border-orange-800 pb-3"
+                                        className="text-center text-orange-700 uppercase text-5xl sm:text-3xl font-semibold border-b-2 border-orange-800 pb-8"
                                     >
                                         Cart list
                                     </TableCell>

@@ -39,21 +39,21 @@ const Navbar = () => {
 
     const navigationLinks = (
         <>
-            <NavigationMenuItem className="p-2 ml-[4px]">
+            <NavigationMenuItem className="p-2">
                 <NavigationMenuLink asChild>
                     <Link
                         to="/"
-                        className={`${navigationMenuTriggerStyle} max-lg:ml-10 font-bold text-2xl hover:border-b-2 border-white`}
+                        className={`${navigationMenuTriggerStyle}  font-bold text-2xl hover:border-b-2 border-white`}
                     >
                         Home
                     </Link>
                 </NavigationMenuLink>
             </NavigationMenuItem>
-            <NavigationMenuItem className="p-2 ml-[4px]">
+            <NavigationMenuItem className="p-2">
                 <NavigationMenuLink asChild>
                     <Link
                         to="/all-product"
-                        className={`${navigationMenuTriggerStyle} max-lg:ml-10 font-bold text-2xl hover:border-b-2 border-white`}
+                        className={`${navigationMenuTriggerStyle}  font-bold text-2xl hover:border-b-2 border-white`}
                     >
                         All-products
                     </Link>
@@ -63,7 +63,7 @@ const Navbar = () => {
                 <NavigationMenuLink asChild>
                     <Link
                         to="/about"
-                        className={`${navigationMenuTriggerStyle} max-lg:ml-10 font-bold text-2xl hover:border-b-2 border-white`}
+                        className={`${navigationMenuTriggerStyle}  font-bold text-2xl hover:border-b-2 border-white`}
                     >
                         About Us
                     </Link>
@@ -73,7 +73,7 @@ const Navbar = () => {
                 <NavigationMenuLink asChild>
                     <Link
                         to="/manage-product"
-                        className={`${navigationMenuTriggerStyle} max-lg:ml-10 font-bold text-2xl hover:border-b-2 border-white`}
+                        className={`${navigationMenuTriggerStyle}  font-bold text-2xl hover:border-b-2 border-white`}
                     >
                         Manage-product
                     </Link>
@@ -83,8 +83,8 @@ const Navbar = () => {
     );
     //   bg-transparent
     return (
-        <div className="border-b-2 bg-amber-950 bg-opacity-90 fixed top-0 left-0 w-full z-30 px-5 md:px-5 xl:px-0">
-            <div className="flex justify-between items-center max-w-screen-lg mx-auto ">
+        <div className="border-b-2 bg-amber-950 bg-opacity-90 fixed top-0 left-0 w-full z-40 px-5  py-1 md:px-5 xl:px-0">
+            <div className="flex justify-between items-center max-w-screen-xl mx-auto ">
                 {/* Hamburger Menu Icon for Mobile */}
                 <div className="flex">
                     <div className="lg:hidden flex items-center">
@@ -98,7 +98,7 @@ const Navbar = () => {
                     </div>
                     {/* Logo and Home link */}
                     <Link to="/" className="flex items-center">
-                        <img src={logo} className="h-24" alt="Logo" />
+                        <img src={logo} className="object-cover w-full max-w-24" alt="Logo" />
                     </Link>
                 </div>
 
@@ -112,7 +112,7 @@ const Navbar = () => {
                     <div className="flex justify-center items-center">
                         <div className="relative">
                             <FaCartArrowDown
-                                className="text-white text-2xl"
+                                className="text-white text-3xl"
                                 onClick={handleNavigatetoCart}
                             />
                             {cartCount > 0 && (
@@ -121,13 +121,13 @@ const Navbar = () => {
                                 </span>
                             )}
                         </div>
-                        <div className="text-white text-xl font-md ms-3">
+                        <div onClick={handleNavigatetoCart} className="text-white text-xl font-md ms-3">
                             My Store
                         </div>
                     </div>
 
                     <div className="text-xl">
-                        <Link to="/">Login </Link>/ <Link to="/">Register</Link>
+                        <Link to="/login">Login </Link>/ <Link to="/register">Register</Link>
                     </div>
                 </div>
             </div>

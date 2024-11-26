@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 * {
-    font-family: "Roboto";
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
     font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/Roboto.woff2) format("woff2");
-}
+  }
+  
 @layer utilities {
     .parallax {
         background-attachment: fixed;
@@ -23,4 +25,7 @@
     .parallax-content {
         @apply relative z-10;
     }
+}
+.hover\:bg-accent:hover {
+    background-color: white! important;
 }

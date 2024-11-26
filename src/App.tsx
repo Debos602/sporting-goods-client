@@ -1,11 +1,12 @@
-import Home from "./pages/Home/Home";
 
 import "./App.css";
+import MainLayout from "./components/layout/MainLayout";
+
 
 const App = () => {
     return (
-        <div className="app-container">
-            <Home />
+        <div>
+            <MainLayout />
         </div>
     );
 };

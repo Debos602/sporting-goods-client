@@ -4,7 +4,7 @@ import { ImCircleDown } from "react-icons/im";
 
 const ManagImage = () => {
     return (
-        <div className="mt-[99px] relative w-full h-96 overflow-hidden">
+        <div className="mt-[94.59px] relative w-full h-[500px] overflow-hidden">
             <img
                 src={sportsImage}
                 alt="Background"

@@ -2,6 +2,10 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import image11 from "../../assets/images/image-11.png";
 import { useInView } from "react-intersection-observer";
+import { IoLocation } from "react-icons/io5";
+import { FaPhoneVolume } from "react-icons/fa6";
+import { TfiEmail } from "react-icons/tfi";
+
 
 interface FormData {
     name: string;
@@ -45,79 +49,104 @@ const ContactUs: React.FC = () => {
             style={{ backgroundImage: `url(${image11})` }}
         >
             {" "}
-            <div
-                ref={ref}
-                className={`max-w-4xl mx-auto p-6  rounded-lg shadow-lg border-2 border-amber-800 ${
-                    inView ? "animate__animated animate__fadeInUp" : ""
-                }`}
-            >
+            <div className="container mx-auto">
                 <h2 className="text-4xl font-extrabold text-center text-orange-800 mb-8">
                     Contact Us
                 </h2>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label
-                                htmlFor="name"
-                                className="block text-lg font-semibold text-gray-700 mb-2"
-                            >
-                                Name
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                {...register("name", {
-                                    required: "Name is required",
-                                })}
-                                className={`w-full border-2 ${
-                                    errors.name
-                                        ? "border-red-500"
-                                        : "border-orange-800"
-                                } text-orange-700 p-4 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
-                            />
-                            {errors.name && (
-                                <p className="text-red-500 text-sm mt-1">
-                                    {errors.name.message}
-                                </p>
-                            )}
-                        </div>
+                <div className="grid grid-cols-1 md:grid-cols-5  shadow-lg rounded-lg bg-amber-950 bg-opacity-50 p-10">
+                  
+                    <div className="col-span-2 p-10">
+                            <h2 className="text-3xl font-extrabold mb-6 text-amber-100">Contact Information</h2>
+                           <div className="flex flex-col space-y-4 text-amber-100">
+                               <div className="flex items-center space-x-2">
+                                <IoLocation className="text-2xl font-bold" />
+                                 <p className="text-md ">Address: Patenga, City, Bangladesh</p>
+                               </div>
+                               <div className="flex items-center space-x-2"> 
+                                    <FaPhoneVolume className="text-2xl font-bold" />
+                                    <p className="text-md">Phone: +88 01834491602</p>
+                               </div>
+                                <div className="flex items-center space-x-2">
+                                    <TfiEmail className="text-2xl font-bold" />
+                                    <p className="text-md font-bold">Email: debos.das.02@gmail.com</p>
+                                </div>
+                           </div>
+                           <div className="mt-6 text-amber-100 text-sml font-normal">
+                             At  sporting goods, we value communication and are always here to assist you with any   inquiries, feedback, or support you may need. Whether you're interested in learning more about our products, need help with your order, we are committed to providing you with prompt and helpful responses.
+                           </div>
 
-                        <div>
-                            <label
-                                htmlFor="email"
-                                className="block text-lg font-semibold text-gray-700 mb-2"
-                            >
-                                Email
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                {...register("email", {
-                                    required: "Email is required",
-                                    pattern: {
-                                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                                        message: "Invalid email address",
-                                    },
-                                })}
-                                className={`w-full border-2 ${
-                                    errors.email
-                                        ? "border-red-500"
-                                        : "border-orange-800"
-                                } text-orange-700 p-4 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
-                            />
-                            {errors.email && (
-                                <p className="text-red-500 text-sm mt-1">
-                                    {errors.email.message}
-                                </p>
-                            )}
-                        </div>
                     </div>
+                    <div
+                        ref={ref}
+                            className={` p-10  rounded-lg shadow-lg text-white col-span-3  ${
+                                inView ? "animate__animated animate__fadeInUp" : ""
+                            }`}
+                        >
+                
+                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label
+                                    htmlFor="name"
+                                    className="block text-sm font-semibold text-white mb-1"
+                                >
+                                    Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    {...register("name", {
+                                        required: "Name is required",
+                                    })}
+                                    className={`w-full border-2 ${
+                                        errors.name
+                                            ? "border-red-500"
+                                            : "border-orange-800"
+                                    } text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
+                                />
+                                {errors.name && (
+                                    <p className="text-red-500 text-sm mt-1">
+                                        {errors.name.message}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div>
+                                <label
+                                    htmlFor="email"
+                                    className="block text-sm font-semibold text-white mb-1"
+                                >
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    {...register("email", {
+                                        required: "Email is required",
+                                        pattern: {
+                                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                                            message: "Invalid email address",
+                                        },
+                                    })}
+                                    className={`w-full border-2 ${
+                                        errors.email
+                                            ? "border-red-500"
+                                            : "border-orange-800"
+                                    } text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
+                                />
+                                {errors.email && (
+                                    <p className="text-red-500 text-sm mt-1">
+                                        {errors.email.message}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label
                                 htmlFor="phone"
-                                className="block text-lg font-semibold text-gray-700 mb-2"
+                                className="block text-sm font-semibold text-white mb-1"
                             >
                                 Phone Number (Optional)
                             </label>
@@ -134,7 +163,7 @@ const ContactUs: React.FC = () => {
                                     errors.phone
                                         ? "border-red-500"
                                         : "border-orange-800"
-                                } text-orange-700 p-4 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
+                                } text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
                             />
                             {errors.phone && (
                                 <p className="text-red-500 text-sm mt-1">
@@ -146,14 +175,14 @@ const ContactUs: React.FC = () => {
                         <div>
                             <label
                                 htmlFor="subject"
-                                className="block text-lg font-semibold text-gray-700 mb-2"
+                                className="block text-sm font-semibold text-white mb-1"
                             >
                                 Subject
                             </label>
                             <select
                                 id="subject"
                                 {...register("subject")}
-                                className="w-full border-2 border-orange-800 text-orange-700 p-4 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition"
+                                className="w-full border-2 border-orange-800 text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition"
                             >
                                 <option value="Product Inquiry">
                                     Product Inquiry
@@ -166,7 +195,7 @@ const ContactUs: React.FC = () => {
                     </div>
 
                     <div>
-                        <label className="block text-lg font-semibold mb-2">
+                        <label className="block text-sm font-semibold mb-1">
                             Preferred Contact Method
                         </label>
                         <div className="flex space-x-6">
@@ -194,7 +223,7 @@ const ContactUs: React.FC = () => {
                     <div>
                         <label
                             htmlFor="message"
-                            className="block text-lg font-semibold text-gray-700 mb-2"
+                            className="block text-sm font-semibold text-white mb-1"
                         >
                             Message
                         </label>
@@ -207,7 +236,7 @@ const ContactUs: React.FC = () => {
                                 errors.message
                                     ? "border-red-500"
                                     : "border-orange-800"
-                            } text-orange-700 p-4 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
+                            } text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
                             rows={6}
                         />
                         {errors.message && (
@@ -223,7 +252,10 @@ const ContactUs: React.FC = () => {
                     >
                         Send Message
                     </button>
-                </form>
+                     </form>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     );

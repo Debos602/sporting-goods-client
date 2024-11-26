@@ -120,7 +120,7 @@ const CheckOut: React.FC = () => {
         <>
             <GlobalImages />
             <div className="bg-amber-200  bg-opacity-50 bg-shad">
-                <div className="max-w-screen-lg mx-auto py-16 px-5 xl:px-0">
+                <div className="max-w-screen-xl mx-auto py-16 px-5 xl:px-0">
                     <h2 className="text-4xl text-orange-800 font-bold text-start uppercase mb-3">
                         Checkout
                     </h2>

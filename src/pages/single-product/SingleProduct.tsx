@@ -51,13 +51,13 @@ const SingleProduct: React.FC = () => {
     console.log(products);
     return (
         <div className="bg-amber-50 py-4 md:py-8 lg:py-8 px-5 ">
-            <div className=" mt-10 max-w-screen-lg mx-auto ">
+            <div className=" mt-10 max-w-screen-xl mx-auto ">
                 <div className="container mx-auto py-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
                         {products?.map((product: TProducts) => (
                             <Card
                                 key={product?._id} // Add a key prop for React's reconciliation process
-                                className="w-full border-2 border-orange-800 text-black p-3 shadow-orange-950 bg-gradient-to-t from-amber-200 to-transparent"
+                                className="w-full border-2 border-orange-800 text-black p-3 shadow-orange-950 bg-gradient-to-t from-amber-200 to-transparent hover:scale-105 duration-300"
                             >
                                 <img
                                     src={product?.image}
@@ -109,7 +109,7 @@ const SingleProduct: React.FC = () => {
                                 </CardContent>
                                 <CardFooter className="p-0">
                                     <Link
-                                        className="font-bold p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-full text-center py-1"
+                                        className="font-bold p-0 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-full text-center py-2 text-2xl"
                                         to={`/cart/${product?._id}`}
                                     >
                                         View Details

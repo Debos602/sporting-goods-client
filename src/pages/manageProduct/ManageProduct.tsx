@@ -219,7 +219,7 @@ const ManageProduct = () => {
                 className="bg-amber-100 bg-no-repeat bg-top"
                 style={{ backgroundImage: `url(${image10})` }}
             >
-                <div className="mx-auto max-w-screen-lg py-10 md:py-24 px-5 xl:px-0">
+                <div className="mx-auto max-w-screen-xl py-10 md:py-24 px-5 xl:px-0">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div
                             ref={ref}
@@ -452,7 +452,7 @@ const ManageProduct = () => {
                     strength={-200}
                 >
                     <div className="parallax-overlay"></div>
-                    <div className="parallax-content max-w-screen-lg mx-auto py-16 text-white">
+                    <div className="parallax-content max-w-screen-xl mx-auto py-16 text-white">
                         <h2 className="text-2xl font-semibold mb-8 uppercase flex items-center px-5 xl:px-0">
                             <strong
                                 className={`${
