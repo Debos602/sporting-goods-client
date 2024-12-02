@@ -1,16 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 * {
     font-family: "Lora", serif;
     font-optical-sizing: auto;
     font-style: normal;
-  }
-  
+}
+
+html,
+body {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto; /* Allow vertical scroll */
+    height: auto; /* Ensure height adapts to content */
+}
+
 @layer utilities {
     .parallax {
         background-attachment: fixed;
@@ -27,5 +33,31 @@
     }
 }
 .hover\:bg-accent:hover {
-    background-color: white! important;
+    background-color: white !important;
+}
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+}
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+    .swiper-pagination-bullet {
+    margin: -14px var(--swiper-pagination-bullet-horizontal-gap, 8px) !important;
+}
+.swiper-pagination-bullet-active {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: #451a02 !important;
 }

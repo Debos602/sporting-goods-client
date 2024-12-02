@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import image11 from "../../assets/images/image-11.png";
 import { useInView } from "react-intersection-observer";
 import { IoLocation } from "react-icons/io5";
-import { FaPhoneVolume } from "react-icons/fa6";
+import { FaPhoneVolume, FaRightLong } from "react-icons/fa6";
 import { TfiEmail } from "react-icons/tfi";
 
 
@@ -50,12 +50,15 @@ const ContactUs: React.FC = () => {
         >
             {" "}
             <div className="container mx-auto">
-                <h2 className="text-4xl font-extrabold text-center text-orange-800 mb-8">
+            <div className="flex items-center mb-10">
+                <h2 className="text-xl ps-5 xl:ps-0 md:text-2xl font-bold text-amber-950 uppercase">
                     Contact Us
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-5  shadow-lg rounded-lg bg-amber-950 bg-opacity-50 p-10">
+                <FaRightLong className="ms-3 text-amber-950" />
+            </div>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-10 shadow-lg rounded-lg bg-amber-950 bg-opacity-50 p-10">
                   
-                    <div className="col-span-2 p-10">
+                    <div className="col-span-2 p-10 border-2 border-amber-800">
                             <h2 className="text-3xl font-extrabold mb-6 text-amber-100">Contact Information</h2>
                            <div className="flex flex-col space-y-4 text-amber-100">
                                <div className="flex items-center space-x-2">
@@ -78,7 +81,7 @@ const ContactUs: React.FC = () => {
                     </div>
                     <div
                         ref={ref}
-                            className={` p-10  rounded-lg shadow-lg text-white col-span-3  ${
+                            className={`p-10  rounded-lg shadow-lg text-amber-100 col-span-3 border-2 border-orange-800   ${
                                 inView ? "animate__animated animate__fadeInUp" : ""
                             }`}
                         >
@@ -88,7 +91,7 @@ const ContactUs: React.FC = () => {
                             <div>
                                 <label
                                     htmlFor="name"
-                                    className="block text-sm font-semibold text-white mb-1"
+                                    className="block text-sm font-semibold text-amber-100 mb-1"
                                 >
                                     Name
                                 </label>
@@ -114,7 +117,7 @@ const ContactUs: React.FC = () => {
                             <div>
                                 <label
                                     htmlFor="email"
-                                    className="block text-sm font-semibold text-white mb-1"
+                                    className="block text-sm font-semibold text-amber-100 mb-1"
                                 >
                                     Email
                                 </label>
@@ -146,7 +149,7 @@ const ContactUs: React.FC = () => {
                         <div>
                             <label
                                 htmlFor="phone"
-                                className="block text-sm font-semibold text-white mb-1"
+                                className="block text-sm font-semibold text-amber-100 mb-1"
                             >
                                 Phone Number (Optional)
                             </label>
@@ -175,7 +178,7 @@ const ContactUs: React.FC = () => {
                         <div>
                             <label
                                 htmlFor="subject"
-                                className="block text-sm font-semibold text-white mb-1"
+                                className="block text-sm font-semibold text-amber-100 mb-1"
                             >
                                 Subject
                             </label>
@@ -223,7 +226,7 @@ const ContactUs: React.FC = () => {
                     <div>
                         <label
                             htmlFor="message"
-                            className="block text-sm font-semibold text-white mb-1"
+                            className="block text-sm font-semibold text-amber-100 mb-1"
                         >
                             Message
                         </label>
@@ -248,7 +251,7 @@ const ContactUs: React.FC = () => {
 
                     <button
                         type="submit"
-                        className="w-full uppercase bg-gradient-to-t from-amber-950 to-amber-700 text-white py-3 rounded-lg shadow-md hover:bg-orange-900 transition-colors duration-300"
+                        className="w-full uppercase bg-gradient-to-t from-amber-950 to-amber-700 text-amber-100 py-3 rounded-lg shadow-md hover:bg-orange-900 transition-colors duration-300"
                     >
                         Send Message
                     </button>

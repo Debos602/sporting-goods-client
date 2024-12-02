@@ -9,9 +9,10 @@ import useNav from "@/hooks/UserNav";
 
 const AllProduct = () => {
     const { data: products, isLoading } = useGetProductQuery(
-        {},
+       
         {
             refetchOnMountOrArgChange: true,
+            refetchOnFocus: true,
         }
     );
     console.log(products);
@@ -23,6 +24,7 @@ const AllProduct = () => {
         priceRange: [0, 1000],
     });
     const [sortOrder, setSortOrder] = useState("");
+    
 
     useNav("All Products");
 
