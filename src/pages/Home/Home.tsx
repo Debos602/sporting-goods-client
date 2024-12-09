@@ -12,9 +12,9 @@ const Home = () => {
         <div className="scroll-smooth focus:scroll-auto">
             <HeroSection />
             <FeaturedProduct />
-            <Service/>
-            <Commitment/>
-            <Review/>
+            <Service />
+            <Commitment />
+            <Review />
             <ContactUs />
         </div>
     );

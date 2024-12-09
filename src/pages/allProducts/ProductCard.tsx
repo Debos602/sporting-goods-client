@@ -47,7 +47,7 @@ const ProductCard = ({
             className={`${inView ? "animate__animated animate__fadeInUp" : ""}`}
             style={{ animationDelay }}
         >
-            <Card className="border-2 p-3 border-orange-800 hover:scale-105 duration-300 hover:bg-gradient-to-b text-black shadow-orange-950 bg-gradient-to-t from-amber-200 to-amber-100 relative">
+            <Card className="border-2 p-3 border-orange-800 hover:scale-105 duration-300 hover:bg-gradient-to-b text-black shadow-orange-950 bg-white bg-opacity-50 relative">
                 <img
                     src={image}
                     className="object-contain max-h-[170px] w-full mb-2"
@@ -82,10 +82,10 @@ const ProductCard = ({
                         Stock: <span className="text-base">{stock}</span>
                     </p>
                     <div className="flex items-center mb-2">
-                        <strong className="text-gray-700 flex items-center">
+                        <strong className="text-gray-950 flex items-center">
                             Rating:
                         </strong>{" "}
-                        <div className="mt-2 ms-2">
+                        <div className="mt-2 ms-2 ">
                             <Rating
                                 initialRating={rating}
                                 emptySymbol={
@@ -110,7 +110,7 @@ const ProductCard = ({
                 </CardContent>
                 <CardFooter className="p-0">
                     <Link
-                        className="font-bold text-xl py-1 uppercase border-2 hover:bg-white hover:text-orange-900 border-orange-900 bg-orange-500 w-full text-center"
+                        className="font-bold text-xl py-1 uppercase border-2 bg-amber-50  hover:bg-white hover:text-orange-900 border-orange-900 w-full text-center"
                         to={`/cart/${_id}`}
                     >
                         View Details

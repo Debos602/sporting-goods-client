@@ -18,11 +18,7 @@ const DialogContents: React.FC<DialogContentsProps> = ({
         formState: { errors, isSubmitting },
     } = useForm<TProducts>({
         defaultValues: {
-            ...product,
-            name: "", // Set to empty to not show default values
-            price: undefined, // Set to undefined to not show default value
-            // Set to empty to not show default value
-            stock: undefined,
+            ...product
         },
     });
 
@@ -34,22 +30,7 @@ const DialogContents: React.FC<DialogContentsProps> = ({
         <DialogContent className="p-4  text-white rounded-md bg-gradient-to-b from-amber-700 to-amber-900">
             <h2 className="text-lg font-bold">Edit Product</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 py-0">
-                <div className="grid grid-cols-4 items-center">
-                    <label htmlFor="_id" className="">
-                        Product ID
-                    </label>
-                    <input
-                        type="text"
-                        {...register("_id", {
-                            required: "Product name is required",
-                        })}
-                        placeholder="Product Name"
-                        className=" px-5 border w-80 text-black"
-                    />
-                    {errors.name && (
-                        <p className="text-red-500">{errors.name.message}</p>
-                    )}
-                </div>
+
 
                 {/* Name Input: Not showing default value */}
                 <div className="grid grid-cols-4 items-center">
@@ -68,25 +49,7 @@ const DialogContents: React.FC<DialogContentsProps> = ({
                         <p className="text-red-500">{errors.name.message}</p>
                     )}
                 </div>
-                <div className="grid grid-cols-4 items-center">
-                    <label htmlFor="category_id" className="">
-                        Category ID
-                    </label>
-                    <input
-                        type="number"
-                        {...register("category_id", {
-                            required: "Category ID is required",
-                            valueAsNumber: true,
-                        })}
-                        placeholder="Category Id"
-                        className="px-5 border  w-80 text-black"
-                    />
-                    {errors.category_id && (
-                        <p className="text-red-500">
-                            {errors.category_id.message}
-                        </p>
-                    )}
-                </div>
+
                 <div className="grid grid-cols-4 items-center">
                     <label htmlFor="category" className="">
                         Category

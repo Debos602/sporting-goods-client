@@ -58,6 +58,7 @@ export interface TDeleteProductResponse {
 }
 
 // Order-related types
+// Order-related types
 export interface TOrderRequest {
     items: Array<{
         id: string;
@@ -77,26 +78,32 @@ export interface TOrderRequest {
     status?: string; // Optional
 }
 
-export interface TOrderResponse {
-    items: Array<{
-        id: string;
-        name: string;
-        price: number;
-        stock: number;
-    }>;
-    totalPriceWithVAT: number;
-    userDetails: {
-        id: string;
-        name: string;
-        email: string;
-        paymentMethod: string;
-        phone: string;
-        address: string;
-    };
-    status?: string;
-    createdAt: string; // ISO 8601 date string
-    updatedAt: string; // ISO 8601 date string
-}
+export type TOrderResponse = {
+    data: {
+        items: Array<{
+            id: string;
+            name: string;
+            price: number;
+            stock: number;
+        }>;
+        totalPriceWithVAT: number;
+        userDetails: {
+            id: string;
+            name: string;
+            email: string;
+            paymentMethod: string;
+            phone: string;
+            address: string;
+        };
+        _id: string;
+        status?: string;
+        createdAt: string;
+        updatedAt: string;
+    }[];
+};
+
+
+
 
 // Other types
 export interface CartState {
@@ -139,3 +146,18 @@ export interface FeaturedCardsProps {
     categoryProduct: TProducts;
     index: number;
 }
+export type TUser = {
+    name: string;
+    email: string;
+    role: 'user' | 'admin';
+    password?: string;
+    confirmPassword?: string;
+    needsPasswordChange?: boolean;
+    passwordChangedAt?: Date;
+    phone?: string;
+    nid?: string;
+    drivingLicense?: string;
+    features?: string[];
+    createdAt?: Date;
+    updatedAt?: Date;
+};

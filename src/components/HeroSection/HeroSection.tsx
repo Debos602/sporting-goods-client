@@ -13,7 +13,7 @@ import { Button } from "../ui/button";
 
 
 const HeroSection = () => {
-    
+
     const sliderImages = [
         {
             id: 1,
@@ -47,13 +47,13 @@ const HeroSection = () => {
                 <CarouselContent>
                     {sliderImages.map((slider) => (
                         <CarouselItem
-                            key={slider.id} 
+                            key={slider.id}
                             className="min-w-full relative z-50"
                         >
                             <Card className="border-0">
                                 <CardContent className="flex items-center justify-center p-0 bg-cover bg-no-repeat h-screen min-w-full relative" style={{ backgroundImage: `url(${slider.image})` }}>
-                                   
-                                    <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center text-center p-4 z-10">
+
+                                    <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center p-4 z-10">
                                         <h2 className="text-white font-semibold text-xl md:text-4xl mb-4 mt-28 animate__animated animate__fadeInUp animate__delay-1s">
                                             {slider.title} <br />
                                             <span className="uppercase font-medium text-orange-600 animate__animated animate__fadeInUp animate__delay-1s">
@@ -64,25 +64,36 @@ const HeroSection = () => {
                                         <p className="text-white text-sm md:text-lg mb-6 max-w-xl md:max-w-2xl  animate__animated animate__fadeInUp animate__delay-1s">
                                             {slider.description}
                                         </p>
-                                        <Button className="bg-orange-400  text-white font-normal md:font-semibold hover:bg-white hover:text-amber-600 uppercase px-4 py-2 rounded-full transition-transform duration-300 hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s">
+                                        <Button
+                                            className="bg-orange-400 text-white font-normal md:font-semibold hover:bg-white hover:text-amber-600 uppercase px-4 py-2 rounded-full transition-transform duration-300 hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s"
+                                            onClick={() => {
+                                                const element = document.getElementById("featured-product");
+                                                if (element) {
+                                                    element.scrollIntoView({ behavior: "smooth" });
+                                                } else {
+                                                    console.error("Featured product section not found.");
+                                                }
+                                            }}
+                                        >
                                             Check Products Below
                                         </Button>
+
                                     </div>
                                 </CardContent>
                             </Card>
                         </CarouselItem>
                     ))}
-                       
+
                 </CarouselContent>
-                     <CarouselPrevious className="absolute left-5 top-[57%]  text-white bg-black p-2 rounded-full  cursor-pointer transition duration-300 ">
-                            &#9664;
-                    </CarouselPrevious>
-                    <CarouselNext className="absolute right-5 top-[57%] text-white bg-black  p-2 rounded-full cursor-pointer  transition duration-300 ">
-                            &#9654;
-                    </CarouselNext>
-             
+                <CarouselPrevious className="absolute left-5 top-[57%]  text-white bg-black p-2 rounded-full  cursor-pointer transition duration-300 ">
+                    &#9664;
+                </CarouselPrevious>
+                <CarouselNext className="absolute right-5 top-[57%] text-white bg-black  p-2 rounded-full cursor-pointer  transition duration-300 ">
+                    &#9654;
+                </CarouselNext>
+
             </Carousel>
-                 
+
         </div>
     );
 };

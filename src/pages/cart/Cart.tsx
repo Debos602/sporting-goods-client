@@ -18,7 +18,7 @@ import { toast } from "sonner";
 import useNav from "@/hooks/UserNav";
 
 const Cart: React.FC = () => {
-    const { id: _id } = useParams<{ id: string }>();
+    const { id: _id } = useParams<{ id: string; }>();
     const navigate = useNavigate();
     const { data: productData, isLoading } = useGetSingleProductQuery(
         _id as string
@@ -113,24 +113,22 @@ const Cart: React.FC = () => {
             >
                 <div className="max-w-screen-xl mx-auto">
                     <h2
-                        className={`text-4xl ps-5 lg:ps-0 font-semibold text-white relative z-20 mb-10  inline-block ${
-                            inView ? "animate__animated animate__fadeInUp" : ""
-                        }`}
+                        className={`text-4xl ps-5 lg:ps-0 font-semibold text-white relative z-20 mb-10  inline-block ${inView ? "animate__animated animate__fadeInUp" : ""
+                            }`}
                     >
                         Details Sports Goods
                     </h2>
                 </div>
                 <div className="flex justify-center items-center ">
                     <div className="absolute inset-0 bg-gray-900 bg-opacity-50 h-full w-full"></div>
-                    <div className="max-w-screen-xl mx-auto relative z-20 w-full bg-orange-100 shadow-lg  p-8">
+                    <div className="max-w-screen-xl mx-auto relative z-20 w-full bg-orange-50 shadow-lg  p-8">
                         <div className="flex flex-col md:flex-row">
                             <div
                                 ref={ref}
-                                className={`w-full md:w-1/2 border-2 border-orange-800 mr-5 bg-gradient-to-t from-amber-200 to-transparent overflow-hidden ${
-                                    inView
-                                        ? "animate__animated animate__fadeInLeft"
-                                        : ""
-                                }`}
+                                className={`w-full md:w-1/2 border-2 border-orange-800 mr-5 bg-amber-50 overflow-hidden ${inView
+                                    ? "animate__animated animate__fadeInLeft"
+                                    : ""
+                                    }`}
                             >
                                 <PhotoProvider>
                                     <PhotoView src={image}>
@@ -143,11 +141,10 @@ const Cart: React.FC = () => {
                                 </PhotoProvider>
                             </div>
                             <div
-                                className={`w-full md:w-1/2 px-8 py-32 border-2 border-orange-800 bg-gradient-to-t from-amber-200 to-transparent ${
-                                    inView
-                                        ? "animate__animated animate__fadeInRight"
-                                        : ""
-                                }`}
+                                className={`w-full md:w-1/2 px-8 py-32 border-2 border-orange-800 bg-amber-50 ${inView
+                                    ? "animate__animated animate__fadeInRight"
+                                    : ""
+                                    }`}
                             >
                                 <h1 className="text-3xl font-bold text-gray-900 mb-4">
                                     {name}
@@ -202,11 +199,10 @@ const Cart: React.FC = () => {
                                 <div className="flex justify-between">
                                     <button
                                         onClick={handleAddToCart}
-                                        className={`bg-orange-700 text-white  hover:bg-white border-2 border-orange-800 uppercase py-2 px-4  hover:text-orange-700 font-semibold transition duration-300 ease-in-out ${
-                                            (existingItem?.stock ?? 0) >= stock
-                                                ? "opacity-50 cursor-not-allowed"
-                                                : ""
-                                        }`}
+                                        className={`bg-orange-700 text-white  hover:bg-white border-2 border-orange-800 uppercase py-2 px-4  hover:text-orange-700 font-semibold transition duration-300 ease-in-out ${(existingItem?.stock ?? 0) >= stock
+                                            ? "opacity-50 cursor-not-allowed"
+                                            : ""
+                                            }`}
                                         disabled={
                                             (existingItem?.stock ?? 0) >= stock
                                         }

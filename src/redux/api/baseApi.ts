@@ -9,13 +9,23 @@ import {
     TDeleteProductResponse,
     TProductsResponse,
 } from "@/types";
+import { RootState } from "../store";
+
+
 
 export const baseApi = createApi({
     reducerPath: "baseApi",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://sportings-goods-server.vercel.app/api",
+        prepareHeaders: (headers, { getState }) => {
+            const token = (getState() as RootState).auth.token; // Adjust based on your state structure
+            if (token) {
+                headers.set("Authorization", `Bearer ${token}`);
+            }
+            return headers;
+        },
     }),
-    tagTypes: ["category", "product"],
+    tagTypes: ["category", "product", "order", "auth"],
     endpoints: (builder) => ({
         getCategory: builder.query({
             query: () => "/category",
@@ -26,7 +36,7 @@ export const baseApi = createApi({
             providesTags: ["product"],
         }),
         getGroupProduct: builder.query<TProductsResponse, string>({
-            query: (category_id) => `/category/${category_id}`,
+            query: (category_id) => `/all-products/${category_id}`,
             providesTags: (result, _error, category_id) =>
                 result ? [{ type: "product", id: category_id }] : [],
         }),
@@ -35,10 +45,7 @@ export const baseApi = createApi({
             providesTags: (result, _error, _id) =>
                 result ? [{ type: "product", id: _id }] : [],
         }),
-        createProduct: builder.mutation<
-            TProductResponse,
-            TCreateProductRequest
-        >({
+        createProduct: builder.mutation<TProductResponse, TCreateProductRequest>({
             query: (newProduct) => ({
                 url: "/create-product",
                 method: "POST",
@@ -53,6 +60,13 @@ export const baseApi = createApi({
                 body: newOrder,
             }),
         }),
+        getAllOrder: builder.query<TOrderResponse, string>({
+            query: () => ({
+                url: "/all-orders",
+                method: "GET",
+            }),
+            providesTags: ["order"],
+        }),
         deleteProduct: builder.mutation<TDeleteProductResponse, string>({
             query: (id) => ({
                 url: `/all-product/${id}`,
@@ -61,10 +75,7 @@ export const baseApi = createApi({
             // Optionally, you can invalidate cache or refetch data here if needed
             invalidatesTags: ["product"], // Adjust based on your needs
         }),
-        updateProduct: builder.mutation<
-            void,
-            { id: string; data: Partial<TUpdateProductRequest>; }
-        >({
+        updateProduct: builder.mutation<void, { id: string; data: Partial<TUpdateProductRequest>; }>({
             query: ({ id, data }) => ({
                 url: `/all-product/${id}`,
                 method: "PATCH",
@@ -78,6 +89,43 @@ export const baseApi = createApi({
         getProducts: builder.query<TProductsResponse, void>({
             query: () => "/all-product",
         }),
+        signUp: builder.mutation({
+            query: (data) => ({
+                url: "/auth/signup",
+                method: "POST",
+                body: data,
+            }),
+        }),
+        logIn: builder.mutation({
+            query: (data) => ({
+                url: "/auth/signin",
+                method: "POST",
+                body: data,
+            }),
+        }),
+        getAllUser: builder.query({
+            query: () => ({
+                url: "/auth/all-users",
+                method: "GET"
+            }),
+            providesTags: ["auth"],
+        }),
+        deleteUser: builder.mutation({
+            query: (userId) => ({
+                url: `/auth/delete-user/${userId}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["auth"],
+        }),
+        updateUser: builder.mutation({
+            query: (data) => ({
+                url: `/auth/update-user`,
+                method: "PATCH",
+                body: data,
+            }),
+            invalidatesTags: ["auth"],
+        })
+
     }),
 });
 
@@ -88,7 +136,13 @@ export const {
     useGetSingleProductQuery,
     useCreateOrderMutation,
     useUpdateProductMutation,
-    useLazyGetProductsQuery, // Export the lazy query
+    useLazyGetProductsQuery,
     useCreateProductMutation,
     useDeleteProductMutation,
+    useSignUpMutation,
+    useLogInMutation,
+    useGetAllOrderQuery,
+    useGetAllUserQuery,
+    useDeleteUserMutation,
+    useUpdateUserMutation
 } = baseApi;

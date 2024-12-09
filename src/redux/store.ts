@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./api/baseApi";
 import cartReducer from "./cartSlice";
+import authReducer from "./authSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // Use localStorage as default storage
 import { combineReducers } from "redux";
@@ -9,13 +10,14 @@ import { combineReducers } from "redux";
 const persistConfig = {
     key: "root", // Key to persist in localStorage
     storage, // Storage method (localStorage)
-    whitelist: ["cart"], // Reducers to persist
+    whitelist: ["cart", "auth"], // Reducers to persist
 };
 
 // Combine your reducers
 const rootReducer = combineReducers({
     [baseApi.reducerPath]: baseApi.reducer,
     cart: cartReducer,
+    auth: authReducer,
 });
 
 // Create a persisted reducer

@@ -1,21 +1,27 @@
 import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { TProducts } from "@/types";
-import { useGetProductQuery } from "@/redux/api/baseApi";
+import { useGetProductQuery, useGetGroupProductQuery } from "@/redux/api/baseApi";
 import GlobalImage from "../Shared/globalImage/GlobalImage";
 import image12 from "../../assets/images/image-12.avif";
 import { Parallax } from "react-parallax";
 import useNav from "@/hooks/UserNav";
 
+
 const AllProduct = () => {
-    const { data: products, isLoading } = useGetProductQuery(
-       
-        {
-            refetchOnMountOrArgChange: true,
-            refetchOnFocus: true,
-        }
+    const { id: category_id } = useParams<{ id: string; }>();
+
+    // Fetch all products or grouped products based on the URL parameter
+    const { data: allProducts, isLoading: allLoading } = useGetProductQuery({
+        refetchOnMountOrArgChange: true,
+        refetchOnFocus: true,
+    });
+    const { data: groupedProducts, isLoading: groupLoading } = useGetGroupProductQuery(
+        category_id as string,
+        { skip: !category_id }
     );
-    console.log(products);
+
     const [searchTerm, setSearchTerm] = useState("");
     const [filters, setFilters] = useState({
         category: "",
@@ -24,14 +30,25 @@ const AllProduct = () => {
         priceRange: [0, 1000],
     });
     const [sortOrder, setSortOrder] = useState("");
-    
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 8;
 
-    useNav("All Products");
+    useNav(category_id ? `Category: ${category_id}` : "All Products");
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
     };
 
+    const clearFilters = () => {
+        setFilters({
+            category: "",
+            brand: "",
+            rating: "",
+            priceRange: [0, 1000],
+        });
+        setSortOrder("");
+        setSearchTerm("");
+    };
     const handleFilterChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
@@ -46,18 +63,9 @@ const AllProduct = () => {
         setSortOrder(event.target.value);
     };
 
-    const clearFilters = () => {
-        setFilters({
-            category: "",
-            brand: "",
-            rating: "",
-            priceRange: [0, 1000],
-        });
-        setSortOrder("");
-        setSearchTerm("");
-    };
+    const productsToDisplay = category_id ? groupedProducts?.data : allProducts?.data;
 
-    const filteredProducts = products?.data
+    const filteredProducts = productsToDisplay
         ?.filter((product: TProducts) =>
             product.name.toLowerCase().includes(searchTerm.toLowerCase())
         )
@@ -84,6 +92,14 @@ const AllProduct = () => {
             return 0;
         });
 
+    const paginatedProducts = filteredProducts?.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
+    const totalPages = Math.ceil((filteredProducts?.length || 0) / itemsPerPage);
+    const isLoading = category_id ? groupLoading : allLoading;
+
     if (isLoading)
         return (
             <p className="text-3xl text-center text-yellow-500 my-2 font-bold">
@@ -97,7 +113,7 @@ const AllProduct = () => {
             <Parallax
                 className="parallax"
                 style={{ backgroundImage: `url(${image12})` }}
-                strength={-200} // Adjust strength as needed
+                strength={-200}
             >
                 <div className="parallax-overlay"></div>
                 <div className="parallax-content max-w-screen-xl mx-auto py-16 px-5 xl:px-0">
@@ -107,7 +123,7 @@ const AllProduct = () => {
                             value={searchTerm}
                             onChange={handleSearch}
                             placeholder="Search by name"
-                            className="p-2 border-2  w-full md:w-1/5 bg-amber-100 text-black border-orange-800"
+                            className="p-2 border-2 w-full md:w-1/5 bg-amber-100 text-black border-orange-800"
                         />
                         <select
                             name="category"
@@ -177,16 +193,42 @@ const AllProduct = () => {
                         </button>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {filteredProducts?.map(
-                            (product: TProducts, index: number) => (
-                                <ProductCard
-                                    key={product.id}
-                                    product={product}
-                                    index={index}
-                                />
-                            )
-                        )}
+                        {paginatedProducts?.map((product: TProducts, index: number) => (
+                            <ProductCard key={product.id} product={product} index={index} />
+                        ))}
                     </div>
+                    <div className="flex items-center justify-between mt-8 w-full">
+                        <Link to="/all-product" className="p-2 px-4 border bg-orange-800 text-white hover:bg-orange-600">show All</Link>
+                        <div className="flex items-center justify-center">
+                            <button
+                                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                                disabled={currentPage === 1}
+                                className={`p-2 px-4 border ${currentPage === 1
+                                    ? "bg-orange-300 text-gray-950 cursor-not-allowed"
+                                    : "bg-orange-800 text-white hover:bg-orange-600"
+                                    }`}
+                            >
+                                Prev
+                            </button>
+                            <p className="mx-4 text-lg text-amber-50">
+                                Page {currentPage} of {totalPages}
+                            </p>
+                            <button
+                                onClick={() =>
+                                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                                }
+                                disabled={currentPage === totalPages}
+                                className={`p-2 px-4 border ${currentPage === totalPages
+                                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                                    : "bg-orange-800 text-white hover:bg-orange-600"
+                                    }`}
+                            >
+                                Next
+                            </button>
+                        </div>
+
+                    </div>
+
                 </div>
             </Parallax>
         </>

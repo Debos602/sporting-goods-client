@@ -16,7 +16,7 @@ const AboutUs: React.FC = () => {
 
     return (
         <div
-            className="bg-amber-100 bg-center"
+            className="bg-amber-50 bg-center"
             style={{ backgroundImage: `url(${image11})` }}
         >
             <div className="mt-[99px] max-w-screen-xl mx-auto ">
@@ -67,9 +67,8 @@ const AboutUs: React.FC = () => {
                 {/* Our Team Section */}
                 <section className="p-8 border border-amber-200 rounded-lg shadow-lg mb-12 relative">
                     <h3
-                        className={`text-3xl font-semibold text-gray-900 mb-6 ${
-                            inView && "animate__animated animate__fadeInUp"
-                        }`}
+                        className={`text-3xl font-semibold text-gray-900 mb-6 ${inView && "animate__animated animate__fadeInUp"
+                            }`}
                     >
                         Meet Our Team
                     </h3>
@@ -77,9 +76,8 @@ const AboutUs: React.FC = () => {
                         {/* Team Member 1 */}
                         <div
                             ref={ref}
-                            className={`p-6 rounded-lg shadow-lg text-center border-amber-200 border ${
-                                inView ? "animate__animated animate__fadeInUp" : ""
-                            }`}
+                            className={`p-6 rounded-lg shadow-lg text-center border-amber-200 border ${inView ? "animate__animated animate__fadeInUp" : ""
+                                }`}
                         >
                             <img
                                 src={Image}
@@ -102,11 +100,10 @@ const AboutUs: React.FC = () => {
                         {/* Team Member 2 */}
                         <div
                             ref={ref}
-                            className={`p-6 rounded-lg shadow-lg text-center border-amber-200 border ${
-                                inView
-                                    ? "animate__animated animate__fadeInUp animate__delay-2s"
-                                    : ""
-                            }`}
+                            className={`p-6 rounded-lg shadow-lg text-center border-amber-200 border ${inView
+                                ? "animate__animated animate__fadeInUp animate__delay-2s"
+                                : ""
+                                }`}
                             style={{ animationDelay: "0.1s" }}
                         >
                             <img
@@ -130,11 +127,10 @@ const AboutUs: React.FC = () => {
                         {/* Team Member 3 */}
                         <div
                             ref={ref}
-                            className={` p-6 rounded-lg shadow-lg text-center border-amber-200 border ${
-                                inView
-                                    ? "animate__animated animate__fadeInUp"
-                                    : ""
-                            }`}
+                            className={` p-6 rounded-lg shadow-lg text-center border-amber-200 border ${inView
+                                ? "animate__animated animate__fadeInUp"
+                                : ""
+                                }`}
                             style={{ animationDelay: "0.2s" }}
                         >
                             <img
@@ -160,9 +156,8 @@ const AboutUs: React.FC = () => {
                 {/* Contact Information Section */}
                 <section
                     ref={ref}
-                    className={`p-8 rounded-lg shadow-lg mb-12 border-amber-200 border ${
-                        inView ? "animate__animated animate__fadeInUp" : ""
-                    }`}
+                    className={`p-8 rounded-lg shadow-lg mb-12 border-amber-200 border ${inView ? "animate__animated animate__fadeInUp" : ""
+                        }`}
                     style={{ animationDelay: "0.3s" }}
                 >
                     <h3 className="text-3xl font-semibold text-gray-900 mb-6">
@@ -222,7 +217,7 @@ const AboutUs: React.FC = () => {
                                     border: "0",
                                     borderRadius: "12px",
                                     boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-                                }}  
+                                }}
                             ></iframe>
                         </div>
                     </div>
