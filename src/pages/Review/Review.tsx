@@ -73,7 +73,7 @@ export default function Review() {
         >
           {products.data?.map((product: TProducts) => (
             <SwiperSlide key={product._id} className='p-4'>
-              <div className="flex flex-col items-center border rounded-lg shadow-md bg-gray-200 hover:bg-gradient-to-b  shadow-orange-950">
+              <div className="flex flex-col items-center  shadow-md bg-gray-300 hover:bg-gradient-to-b  shadow-orange-950 p-2">
                 <img
                   src={product.image}
                   alt={product.name}

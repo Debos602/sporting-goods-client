@@ -187,7 +187,7 @@ const AllProduct = () => {
                         </select>
                         <button
                             onClick={clearFilters}
-                            className="p-2 bg-orange-800 uppercase border-2 border-white text-white w-full md:w-1/5 hover:bg-white hover:border-orange-800 hover:text-orange-800"
+                            className="p-2 bg-orange-950 uppercase border-2 border-white text-white w-full md:w-1/5 hover:bg-white hover:border-orange-800 hover:text-orange-800"
                         >
                             Clear Filters
                         </button>

@@ -58,7 +58,7 @@ const ContactUs: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-10 shadow-lg rounded-lg bg-amber-950 bg-opacity-50 p-10">
 
-                    <div className="col-span-2 p-10 border-2 border-amber-800">
+                    <div className="col-span-2 p-10 border border-amber-800">
                         <h2 className="text-3xl font-extrabold mb-6 text-amber-100">Contact Information</h2>
                         <div className="flex flex-col space-y-4 text-amber-100">
                             <div className="flex items-center space-x-2">
@@ -81,7 +81,7 @@ const ContactUs: React.FC = () => {
                     </div>
                     <div
                         ref={ref}
-                        className={`p-10  rounded-lg shadow-lg text-amber-100 col-span-3 border-2 border-orange-800   ${inView ? "animate__animated animate__fadeInUp" : ""
+                        className={`p-10  rounded-lg shadow-lg text-amber-100 col-span-3 border border-orange-800   ${inView ? "animate__animated animate__fadeInUp" : ""
                             }`}
                     >
 
@@ -100,7 +100,7 @@ const ContactUs: React.FC = () => {
                                         {...register("name", {
                                             required: "Name is required",
                                         })}
-                                        className={`w-full border-2 ${errors.name
+                                        className={`w-full border ${errors.name
                                             ? "border-red-500"
                                             : "border-orange-800"
                                             } text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
@@ -129,7 +129,7 @@ const ContactUs: React.FC = () => {
                                                 message: "Invalid email address",
                                             },
                                         })}
-                                        className={`w-full border-2 ${errors.email
+                                        className={`w-full border ${errors.email
                                             ? "border-red-500"
                                             : "border-orange-800"
                                             } text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
@@ -159,7 +159,7 @@ const ContactUs: React.FC = () => {
                                                 message: "Invalid phone number",
                                             },
                                         })}
-                                        className={`w-full border-2 ${errors.phone
+                                        className={`w-full border ${errors.phone
                                             ? "border-red-500"
                                             : "border-orange-800"
                                             } text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
@@ -181,7 +181,7 @@ const ContactUs: React.FC = () => {
                                     <select
                                         id="subject"
                                         {...register("subject")}
-                                        className="w-full border-2 border-orange-800 text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition"
+                                        className="w-full border border-orange-800 text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition"
                                     >
                                         <option value="Product Inquiry">
                                             Product Inquiry
@@ -231,7 +231,7 @@ const ContactUs: React.FC = () => {
                                     {...register("message", {
                                         required: "Message is required",
                                     })}
-                                    className={`w-full border-2 ${errors.message
+                                    className={`w-full border ${errors.message
                                         ? "border-red-500"
                                         : "border-orange-800"
                                         } text-orange-700 p-1 rounded-lg shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition`}
@@ -246,7 +246,7 @@ const ContactUs: React.FC = () => {
 
                             <button
                                 type="submit"
-                                className="w-full uppercase bg-gradient-to-t from-amber-950 to-amber-700 text-amber-100 py-3 rounded-lg shadow-md hover:bg-orange-900 transition-colors duration-300"
+                                className="text-center uppercase bg-amber-950 px-5 text-amber-100 py-3 border shadow-md  transition-colors duration-300"
                             >
                                 Send Message
                             </button>

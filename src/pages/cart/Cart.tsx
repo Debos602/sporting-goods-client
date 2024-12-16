@@ -125,7 +125,7 @@ const Cart: React.FC = () => {
                         <div className="flex flex-col md:flex-row">
                             <div
                                 ref={ref}
-                                className={`w-full md:w-1/2 border-2 border-orange-800 mr-5 bg-amber-50 overflow-hidden ${inView
+                                className={`w-full md:w-1/2 border border-orange-950 mr-5 bg-amber-50 overflow-hidden ${inView
                                     ? "animate__animated animate__fadeInLeft"
                                     : ""
                                     }`}
@@ -141,7 +141,7 @@ const Cart: React.FC = () => {
                                 </PhotoProvider>
                             </div>
                             <div
-                                className={`w-full md:w-1/2 px-8 py-32 border-2 border-orange-800 bg-amber-50 ${inView
+                                className={`w-full md:w-1/2 px-8 py-32 border border-orange-950 bg-amber-50 ${inView
                                     ? "animate__animated animate__fadeInRight"
                                     : ""
                                     }`}
@@ -199,7 +199,7 @@ const Cart: React.FC = () => {
                                 <div className="flex justify-between">
                                     <button
                                         onClick={handleAddToCart}
-                                        className={`bg-orange-700 text-white  hover:bg-white border-2 border-orange-800 uppercase py-2 px-4  hover:text-orange-700 font-semibold transition duration-300 ease-in-out ${(existingItem?.stock ?? 0) >= stock
+                                        className={`bg-orange-700 text-white  hover:bg-white border border-orange-950 uppercase py-2 px-4  hover:text-orange-700 font-semibold transition duration-300 ease-in-out ${(existingItem?.stock ?? 0) >= stock
                                             ? "opacity-50 cursor-not-allowed"
                                             : ""
                                             }`}
@@ -213,7 +213,7 @@ const Cart: React.FC = () => {
                                     </button>
                                     <Button
                                         onClick={handleCartPage}
-                                        className="bg-orange-700 uppercase text-white border-2 border-orange-800 py-2 px-4 \ hover:bg-white hover:text-orange-700 font-semibold transition duration-300"
+                                        className="bg-orange-700 uppercase text-white border border-orange-950 py-2 px-4 \ hover:bg-white hover:text-orange-700 font-semibold transition duration-300"
                                     >
                                         View Cart
                                     </Button>

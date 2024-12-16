@@ -46,7 +46,7 @@ const FeaturedCards = ({ categoryProduct, index }: FeaturedCardsProps) => {
             className={`${inView ? "animate__animated animate__fadeInUp" : ""}`}
             style={{ animationDelay }}
         >
-            <Card className="w-full border-2 border-orange-950 text-black p-3 hover:scale-105 duration-300  shadow-orange-950 bg-white bg-opacity-50 relative pb-3">
+            <Card className="w-full border border-orange-950 border-opacity-40 text-black p-3 hover:scale-105 duration-300  shadow-orange-950 bg-white bg-opacity-90 relative pb-3">
                 <img
                     src={image}
                     className="object-contain max-h-[200px] h-full w-full mb-2"
@@ -88,7 +88,7 @@ const FeaturedCards = ({ categoryProduct, index }: FeaturedCardsProps) => {
                 </CardContent>
                 <CardFooter className="p-0">
                     <Link
-                        className="font-medium text-xl p-0 uppercase border-2 bg-amber-50  hover:bg-white duration-700 border-orange-950 w-full text-center py-2"
+                        className="font-medium text-lg p-0 border bg-amber-50  hover:bg-white duration-700 border-orange-950 w-full text-center py-1"
                         to={`/all-products/${category_id}`}
                     >
                         {" "}

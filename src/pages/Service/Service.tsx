@@ -11,7 +11,7 @@ const Service = () => {
                 {/* Content Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                     {/* Image Section */}
-                    <div className="border-2 border-amber-800">
+                    <div className="border border-amber-800">
                         <img
                             src={image}
                             className="object-cover w-full"

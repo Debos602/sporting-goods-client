@@ -146,7 +146,7 @@ const ProductsPage = () => {
                         {productsToShow?.map((product: TProducts, index: number) => (
                             <tr
                                 key={product._id}
-                                className={`border-2 border-amber-950 hover:bg-gray-50 ${index % 2 === 0 ? "bg-gray-50" : ""}`}
+                                className={`border border-amber-950 hover:bg-gray-50 ${index % 2 === 0 ? "bg-gray-50" : ""}`}
                             >
                                 <td className="px-4 py-2 text-base text-center">
                                     <img src={product.image} alt={product.name} className="w-12 h-12 object-cover rounded" />

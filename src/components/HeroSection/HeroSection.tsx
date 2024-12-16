@@ -53,19 +53,19 @@ const HeroSection = () => {
                             <Card className="border-0">
                                 <CardContent className="flex items-center justify-center p-0 bg-cover bg-no-repeat h-screen min-w-full relative" style={{ backgroundImage: `url(${slider.image})` }}>
 
-                                    <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-center p-4 z-10">
-                                        <h2 className="text-white font-semibold text-xl md:text-4xl mb-4 mt-28 animate__animated animate__fadeInUp animate__delay-1s">
+                                    <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-center p-4 z-10">
+                                        <h2 className="text-white font-semibold text-xl md:text-4xl mb-2 mt-28 animate__animated animate__fadeInUp animate__delay-1s">
                                             {slider.title} <br />
-                                            <span className="uppercase font-medium text-orange-600 animate__animated animate__fadeInUp animate__delay-1s">
+                                            <span className="uppercase font-base  text-[24px] text-orange-600 animate__animated animate__fadeInUp animate__delay-1s">
                                                 {slider.subtitle}
                                             </span>
                                             !
                                         </h2>
-                                        <p className="text-white text-sm md:text-lg mb-6 max-w-xl md:max-w-2xl  animate__animated animate__fadeInUp animate__delay-1s">
+                                        <p className="text-white text-sm md:text-lg mb-3 max-w-xl md:max-w-2xl  animate__animated animate__fadeInUp animate__delay-1s">
                                             {slider.description}
                                         </p>
                                         <Button
-                                            className="bg-orange-400 text-white font-normal md:font-semibold hover:bg-white hover:text-amber-600 uppercase px-4 py-2 rounded-full transition-transform duration-300 hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s"
+                                            className=" text-white font-normal md:font-semibold border border-white hover:bg-amber-50 hover:text-amber-950  uppercase px-4 py-2 mt-1 rounded-lg transition-transform duration-700 hover:scale-105 animate__animated animate__fadeInUp animate__delay-1s"
                                             onClick={() => {
                                                 const element = document.getElementById("featured-product");
                                                 if (element) {

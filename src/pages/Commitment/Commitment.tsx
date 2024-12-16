@@ -26,7 +26,7 @@ const Commitment = () => {
                         </p>
                     </div>
 
-                    <div className="border-2 border-amber-800 bg-white">
+                    <div className="border border-amber-800 bg-white">
                         <img
                             src={image}
                             className="object-cover w-full"

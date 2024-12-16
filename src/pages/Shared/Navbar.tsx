@@ -185,7 +185,7 @@ const Navbar = () => {
                                     ) : (
                                         <DropdownMenuTrigger>
 
-                                            <Link to="/login" className="border-2 hover:bg-amber-50 hover:text-amber-950 duration-700 px-4 py-2 ">Login</Link>
+                                            <Link to="/login" className="border hover:bg-amber-50 hover:text-amber-950 duration-700 px-4 py-2 ">Login</Link>
                                         </DropdownMenuTrigger>
                                     )
                                 }
