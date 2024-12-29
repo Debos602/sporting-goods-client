@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Toaster, toast } from "sonner";
 import GlobalImages from "../Shared/globalImage/GlobalImages";
 import { useLocation, useNavigate } from "react-router-dom";
-import { CartItem, FormData, TOrderRequest } from "@/types";
+import { CartItem, FormData, TOrderRequest, TUser } from "@/types";
 import {
     useCreateOrderMutation,
     useLazyGetProductsQuery,
@@ -13,8 +13,11 @@ import "./CheckOut.css";
 import { useDispatch } from "react-redux";
 import { clearCart } from "@/redux/cartSlice";
 import useNav from "@/hooks/UserNav";
+import { useAppSelector } from "@/redux/hooks";
 
 const CheckOut: React.FC = () => {
+    const user = useAppSelector((state) => state.auth.user) as TUser | null;
+    console.log(user);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -36,6 +39,7 @@ const CheckOut: React.FC = () => {
     useNav("CheckOut");
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
+        console.log(data);
         if (!data.termsAgreed) {
             toast.error("Please agree to the terms and conditions.", {
                 duration: 4000,
@@ -50,7 +54,14 @@ const CheckOut: React.FC = () => {
         const orderData: TOrderRequest = {
             items: cartItems,
             totalPriceWithVAT,
-            userDetails: data,
+            userDetails: {
+                _id: user?._id,
+                name: data.name,
+                email: data.email,
+                paymentMethod: data.paymentMethod,
+                phone: data.phone,
+                address: data.address,
+            },
             status: "Pending",
         };
 
@@ -156,6 +167,7 @@ const CheckOut: React.FC = () => {
                                     <label
                                         htmlFor="email"
                                         className="block font-bold text-xl"
+
                                     >
                                         Email
                                     </label>
@@ -166,6 +178,7 @@ const CheckOut: React.FC = () => {
                                             required: "Email is required",
                                         })}
                                         className="border-2 border-orange-800 p-1 w-full"
+                                        defaultValue={user?.email}
                                     />
                                     {errors.email && (
                                         <p className="text-red-500">

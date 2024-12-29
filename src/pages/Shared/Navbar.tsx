@@ -125,7 +125,7 @@ const Navbar = () => {
                     </div>
                     {/* Logo and Home link */}
                     <Link to="/" className="flex items-center">
-                        <img src={logo} className="object-cover h-full max-h-16" alt="Logo" />
+                        <img src={logo} className="object-cover h-full max-h-12" alt="Logo" />
                     </Link>
                 </div>
 

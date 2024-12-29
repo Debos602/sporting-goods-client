@@ -68,7 +68,7 @@ export interface TOrderRequest {
     }>;
     totalPriceWithVAT: number;
     userDetails: {
-        id: string;
+        _id?: string;
         name: string;
         email: string;
         paymentMethod: string;
@@ -88,7 +88,7 @@ export type TOrderResponse = {
         }>;
         totalPriceWithVAT: number;
         userDetails: {
-            id: string;
+            _id: string;
             name: string;
             email: string;
             paymentMethod: string;
@@ -147,6 +147,7 @@ export interface FeaturedCardsProps {
     index: number;
 }
 export type TUser = {
+    _id: string;
     name: string;
     email: string;
     role: 'user' | 'admin';

@@ -24,6 +24,8 @@ import UserMangement from "@/pages/adminDashboard/UserMangement";
 import OrdersPage from "@/pages/adminDashboard/OrdersPage";
 import Profle from "@/pages/dashboard/Profile";
 import Order from "@/pages/dashboard/Order";
+import DashboardOverview from "@/pages/dashboard/DashboardOverview";
+import Notification from "@/pages/dashboard/Notification";
 
 
 
@@ -93,11 +95,11 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Profle />,
+                element: <DashboardOverview />,
             },
             {
-                path: "profile",
-                element: <Profle />,
+                path: "dashboard-overview",
+                element: <DashboardOverview />,
             },
             {
                 path: "profile",
@@ -106,6 +108,10 @@ const router = createBrowserRouter([
             {
                 path: "order",
                 element: <Order />,
+            },
+            {
+                path: "notifications",
+                element: <Notification />,
             }
         ]
     },

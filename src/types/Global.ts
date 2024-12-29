@@ -1,6 +1,6 @@
 
 export type TUser = {
-    id: string;
+    _id: string;
     name: string;
     email: string; // Ensure this property is present
     role: "user" | "admin";

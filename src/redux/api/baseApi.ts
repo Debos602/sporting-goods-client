@@ -16,7 +16,7 @@ import { RootState } from "../store";
 export const baseApi = createApi({
     reducerPath: "baseApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://sportings-goods-server.vercel.app/api",
+        baseUrl: "https://sportings-goods-server.vercel.appD/api",
         prepareHeaders: (headers, { getState }) => {
             const token = (getState() as RootState).auth.token; // Adjust based on your state structure
             if (token) {
@@ -63,6 +63,13 @@ export const baseApi = createApi({
         getAllOrder: builder.query<TOrderResponse, string>({
             query: () => ({
                 url: "/all-orders",
+                method: "GET",
+            }),
+            providesTags: ["order"],
+        }),
+        getUserOrder: builder.query<TOrderResponse, string>({
+            query: (userId) => ({
+                url: `/all-orders/${userId}`,
                 method: "GET",
             }),
             providesTags: ["order"],
@@ -144,5 +151,6 @@ export const {
     useGetAllOrderQuery,
     useGetAllUserQuery,
     useDeleteUserMutation,
-    useUpdateUserMutation
+    useUpdateUserMutation,
+    useGetUserOrderQuery
 } = baseApi;
